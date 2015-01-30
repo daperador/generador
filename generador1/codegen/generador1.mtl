@@ -6,6 +6,9 @@
 [file ('prueba.txt', false, 'UTF-8')]
 [for (e : Class | m.allOwnedElements())]
 	[e.name/]
+	[for (a : Property | e.allAttributes())]
+		[a.name/]:[a.dataType.name/]
+	[/for]
 [/for]
 ---------
 [for (e : Enumeration | m.allOwnedElements())]
