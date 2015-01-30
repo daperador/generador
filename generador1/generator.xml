@@ -1,4 +1,4 @@
 <generator>
-  <name>simple-python</name>
-  <m2t name="uml2python.mtl"/>
+  <name>gen</name>
+  <m2t name="generador1.mtl"/>
 </generator>
