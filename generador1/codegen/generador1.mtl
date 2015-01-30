@@ -4,7 +4,7 @@
 [template public generate(m : Package)]
 [comment @main/]
 [file ('prueba.txt', false, 'UTF-8')]
-[for (e : Classifier | m.ownedElement)]
+[for (e : Classifier | m.allOwnedElements())]
 	[e.name/]
 [/for]
 [/file]
