@@ -1,0 +1,11 @@
+[comment encoding = UTF-8 /]
+[module uml2python('http://www.eclipse.org/uml2/4.0.0/UML')]
+
+[template public generate(m : Package)]
+[comment @main/]
+[file ('prueba.txt', false, 'UTF-8')]
+[for (e : Classifier | m.ownedElement)]
+	[e.name/]
+[/for]
+[/file]
+[/template]
