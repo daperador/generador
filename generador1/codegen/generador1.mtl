@@ -10,6 +10,9 @@
 ---------
 [for (e : Enumeration | m.allOwnedElements())]
 	[e.name/]
+	[for (l : Any | e.allOwnedLiterals())]
+		[l.name/]
+	[/for]
 [/for]
 [/file]
 [/template]
