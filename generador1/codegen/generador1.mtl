@@ -10,7 +10,7 @@
 ---------
 [for (e : Enumeration | m.allOwnedElements())]
 	[e.name/]
-	[for (l : EnumerationLiteral | e.getOwnedLiterals())]
+	[for (l : EnumerationLiteral | e.allOwnedElements())]
 		[l.name/]
 	[/for]
 [/for]
