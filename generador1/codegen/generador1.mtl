@@ -7,7 +7,7 @@
 [for (e : Class | m.allOwnedElements())]
 	[e.name/]
 	[for (a : Property | e.allAttributes())]
-		[a.name/]:[a.dataType.name/]
+		[a.name/]:[a.type.name/]
 	[/for]
 [/for]
 ---------
