@@ -14,7 +14,7 @@
 [template public generate(c : Class)]
 [comment @main/]
 [file ('/src/' + c.getQualifiedName().replaceAll('::', '/') + '.java', false, 'UTF-8')]
-package [c.getQualifiedName().replace('.*::', '').replaceAll('::', '.')/];
+package [c.getQualifiedName().replaceAll('::', '.')/];
 
 [if (c.attribute->exists(a : Property | a.isMany() and a.isOrdered))]
 import java.util.List;
