@@ -5,7 +5,7 @@
 [file ('/src/' + c._package.qualifiedName.replaceAll('::', '/') +'/persistencia/'+ c.name + '.java', false, 'UTF-8')]
 package [c._package.qualifiedName.replaceAll('::', '.')/].persistencia;
 
-import c._package.qualifiedName.replaceAll('::', '.')/].persistencia.entity.*;
+import c._package.qualifiedName.replaceAll('::', '.')/].persistencia.entidades.*;
 import java.util.List;
 import java.util.ArrayList;
 import javax.persistence.*;

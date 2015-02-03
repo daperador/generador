@@ -1,20 +1,10 @@
-[comment]
-/*******************************************************************************
- * 
- * This is a MTL generator template
- * See: 
- * Language Reference: http://help.eclipse.org/juno/topic/org.eclipse.acceleo.doc/pages/reference/language.html?cp=5_3_0
- * Operations: http://help.eclipse.org/juno/topic/org.eclipse.acceleo.doc/pages/reference/operations.html?cp=5_3_2
- * Text production rules: http://help.eclipse.org/juno/topic/org.eclipse.acceleo.doc/pages/reference/textproductionrules.html?cp=5_3_5
- *
- *******************************************************************************
-[/comment]
-[module entity('http://www.eclipse.org/uml2/4.0.0/UML')/]
+[module entidad('http://www.eclipse.org/uml2/4.0.0/UML')/]
 
 [template public generate(c : Class)]
 [comment @main/]
-[file ('/src/' + c.getQualifiedName().replaceAll('::', '/') + '.java', false, 'UTF-8')]
-package [c.getQualifiedName().replaceAll('::', '.')/];
+[file ('/src/' + c._package.qualifiedName.replaceAll('::', '/') +'/persistencia/entidades/'+ c.name + '.java', false, 'UTF-8')]
+package [c._package.qualifiedName.replaceAll('::', '.')/].persistencia.entidades;
+
 
 [if (c.attribute->exists(a : Property | a.isMany() and a.isOrdered))]
 import java.util.List;
@@ -24,17 +14,35 @@ import java.util.ArrayList;
 import java.util.Set;
 import java.util.HashSet;
 [/if]
+[if (c.attribute->exists(a : Property | a.type.name.equalsIgnoreCase('Date')))]
+import java.util.Date;
+[/if]
+import javax.persistence.*;
 
 /**
-* @generated
-*/
+  *  @generated
+  */
 [c.classHeader()/] {
+
+	@Id
+    //@Column(name = "[c.name/]_id")
+    @GeneratedValue(generator = "[c.name/]Gen", strategy = GenerationType.SEQUENCE)
+    @SequenceGenerator(name = "[c.name/]Gen", sequenceName = "[c.name/]_SEQ",allocationSize = 1)
+	private Long id;
+
+	public Long getId(){
+		return this.id;
+	}
+
+	public void setId(Long id){
+		this.id=id;
+	}
     [c.attribute.generate()/]
     [c.getAssociations().navigableOwnedEnd->select(type <> c).generate()/]
     [c.attribute.accessors()/]
 [if (c.ownedOperation->notEmpty())]
 
-    //                          Operations                                  
+    //Operations                                  
     
     [c.ownedOperation.generate()/]
 [/if]
@@ -49,6 +57,7 @@ import java.util.HashSet;
 /**
 * @generated
 */
+@OneToMany(cascade={},fetch=javax.persistence.FetchType.Lazy)
 private List<[a.type.name/]> [a.name/];
 
 [/template]
@@ -58,6 +67,7 @@ private List<[a.type.name/]> [a.name/];
 /**
 * @generated
 */
+@OneToMany(cascade={},fetch=javax.persistence.FetchType.Lazy)
 private Set<[a.type.name/]> [a.name/];
 
 [/template]
@@ -69,6 +79,12 @@ private Set<[a.type.name/]> [a.name/];
 /**
 * @generated
 */
+[if(a.isAttribute())]
+[if(a.type.name.equalsIgnoreCase('Date')) ]@Temporal(TemporalType.DATE)[/if]
+//@Column(name = "[a.name/]")
+[else]
+@ManyToOne(cascade={},fetch=FetchType.EAGER)
+[/if]
 private [a.type.name/] [a.name/];
 
 [/template]
@@ -131,6 +147,11 @@ private [a.type.name/] [a.name/];
 [/template]
 
 [template public classHeader(c : Class)]
+@Entity
+@Table(name="[c.name/]")//, schema="${schema}")
+@NamedQueries({
+	@NamedQuery(name="[c.name/].obtenerTodos", query="select e from [c.name/] e")
+})
 [c.visibility/] class [c.name/][c.extendsHeader()/][c.implementsHeader()/]
 [/template]
 
