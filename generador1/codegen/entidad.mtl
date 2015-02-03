@@ -9,7 +9,7 @@
  *
  *******************************************************************************
 [/comment]
-[module dto('http://www.eclipse.org/uml2/4.0.0/UML')/]
+[module entity('http://www.eclipse.org/uml2/4.0.0/UML')/]
 
 [template public generate(c : Class)]
 [comment @main/]
@@ -131,7 +131,7 @@ private [a.type.name/] [a.name/];
 [/template]
 
 [template public classHeader(c : Class)]
-[c.visibility/] class [c.name/]DTO[c.extendsHeader()/][c.implementsHeader()/]
+[c.visibility/] class [c.name/][c.extendsHeader()/][c.implementsHeader()/]
 [/template]
 
 [template public extendsHeader(c : Class) ? (c.superClass->notEmpty())]

@@ -1,0 +1,173 @@
+[module logica('http://www.eclipse.org/uml2/4.0.0/UML')/]
+
+[template public generate(c : Class)]
+[comment @main/]
+[file ('/src/' + c._package.qualifiedName.replaceAll('::', '/') +'/logica/'+ c.name + '.java', false, 'UTF-8')]
+package [c._package.qualifiedName.replaceAll('::', '.')/].logica;
+
+import c._package.qualifiedName.replaceAll('::', '.')/].dto.*;
+import c._package.qualifiedName.replaceAll('::', '.')/].persistencia.*;
+import c._package.qualifiedName.replaceAll('::', '.')/].persistencia.entity.*;
+import java.util.List;
+import java.util.ArrayList;
+import javax.persistence.*;
+import javax.ejb.EJB;
+import javax.ejb.Stateless;
+
+/**
+  *  @generated
+  */
+[c.classHeader()/] {
+	@EJB
+    private [c.name/]Persistencia persistencia;
+
+	[c.getAll()/]
+	[c.getID()/]
+	[c.insert()/]
+	[c.delete()/]
+	[c.update()/]
+	[c.converterDTO2Entity()/]
+	[c.converterDTO2EntityList()/]
+	[c.converterEntity2DTO()/]
+	[c.converterEntity2DTOList()/]
+	
+}
+[/file]
+[/template]
+
+[template public classHeader(c : Class)]
+@Stateless
+[c.visibility/] class [c.name/]Logica[c.extendsHeader()/][c.implementsHeader()/]
+[/template]
+
+[template public extendsHeader(c : Class) ? (c.superClass->notEmpty())]
+ extends [c.superClass.name/]
+[/template]
+
+[template public implementsHeader(c : Class) ? (c.interfaceRealization->notEmpty())]
+ implements [c.interfaceRealization.supplier.name->sep(', ')/]
+[/template]
+
+[template public getAll(a : Class)]
+
+/**
+* @generated
+*/
+public List<[a.name/]DTO> obtenerTodos[a.name/]s(){
+	return convertir(persistencia.obtenerTodos[a.name/]s());
+}
+[/template]
+
+[template public getID(a : Class)]
+
+/**
+* @generated
+*/
+public [a.name/]DTO obtener[a.name/](Long id){
+	return convertir(persistencia.obtener[a.name/](id));
+}
+
+[/template]
+
+[template public insert(a : Class)]
+
+/**
+* @generated
+*/
+public [a.name/]DTO guardar[a.name/]([a.name/]DTO dto){
+	return convertir(persistencia.guardar[a.name/](convertir(dto)));
+}
+
+[/template]
+
+[template public update(a : Class)]
+
+/**
+* @generated
+*/
+public void actualizar[a.name/]([a.name/]DTO dto){
+	persistencia.actualizar[a.name/](convertir(dto)));
+}
+
+[/template]
+
+[template public delete(a : Class)]
+
+/**
+* @generated
+*/
+public [a.name/] borrar[a.name/](Long id){
+	persistencia.borrar(id);
+}
+
+[/template]
+
+[template public converterDTO2Entity(c : Class)]
+
+/**
+* @generated
+*/
+private [c.name/] convertir([c.name/]DTO dto){
+	[c.name/] entidad=new [c.name/]();
+	[c.attribute.converterDTOAttribute()/]
+}
+
+[/template]
+
+[template public converterDTOAttribute(a : Property)]
+[if(a.isAttribute())]
+	entity.set[a.name.toUpperFirst()/](dto.get[a.name.toUpperFirst()/]());
+[else]
+	//TODO: pendiente por implementar[a.name/]
+[/if]
+[/template]
+
+[template public converterEntity2DTO(c : Class)]
+
+/**
+* @generated
+*/
+private [c.name/]DTO convertir([c.name/] entidad){
+	[c.name/] dto=new [c.name/]();
+	[c.attribute.converterDTOAttribute()/]
+}
+
+[/template]
+
+[template public converterEntityAttribute(a : Property)]
+[if(a.isAttribute())]
+	dto.set[a.name.toUpperFirst()/](entity.get[a.name.toUpperFirst()/]());
+[else]
+	//TODO: pendiente por implementar[a.name/]
+[/if]
+[/template]
+
+[template public converterDTO2EntityList(c : Class)]
+
+/**
+* @generated
+*/
+private List<[c.name/]> convertir(List<[c.name/]DTO> dtos){
+	List<[c.name/]> entidades=new ArrayList<[c.name/]>();
+	for([c.name/] dto:dtos){
+		entidades.add(convertir(dto));
+	}
+	return entidades;
+}
+
+[/template]
+
+[template public converterEntity2DTOList(c : Class)]
+
+/**
+* @generated
+*/
+private List<[c.name/]DTO> convertir(List<[c.name/]> entidades){
+	List<[c.name/]DTO> dtos=new ArrayList<[c.name/]DTO>();
+	for([c.name/] entidad:entidades){
+		dtos.add(convertir(entidad));
+	}
+	return dtos;
+}
+
+[/template]

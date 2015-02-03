@@ -2,8 +2,8 @@
 
 [template public generate(c : Class)]
 [comment @main/]
-[file ('/src/' + c._package.qualifiedName.replaceAll('::', '/') +'/entity/'+ c.name + '.java', false, 'UTF-8')]
-package [c._package.qualifiedName.replaceAll('::', '.')/].entity;
+[file ('/src/' + c._package.qualifiedName.replaceAll('::', '/') +'/persistencia/entity/'+ c.name + '.java', false, 'UTF-8')]
+package [c._package.qualifiedName.replaceAll('::', '.')/].persistencia.entity;
 
 
 [if (c.attribute->exists(a : Property | a.isMany() and a.isOrdered))]
@@ -17,12 +17,7 @@ import java.util.HashSet;
 [if (c.attribute->exists(a : Property | a.type.name.equalsIgnoreCase('Date')))]
 import java.util.Date;
 [/if]
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
-import javax.persistence.SequenceGenerator;
+import javax.persistence.*;
 
 /**
   *  @generated
@@ -62,6 +57,7 @@ import javax.persistence.SequenceGenerator;
 /**
 * @generated
 */
+@OneToMany(cascade={},fetch=javax.persistence.FetchType.Lazy)
 private List<[a.type.name/]> [a.name/];
 
 [/template]
@@ -71,6 +67,7 @@ private List<[a.type.name/]> [a.name/];
 /**
 * @generated
 */
+@OneToMany(cascade={},fetch=javax.persistence.FetchType.Lazy)
 private Set<[a.type.name/]> [a.name/];
 
 [/template]
@@ -86,7 +83,7 @@ private Set<[a.type.name/]> [a.name/];
 [if(a.type.name.equalsIgnoreCase('Date')) ]@Temporal(TemporalType.DATE)[/if]
 //@Column(name = "[a.name/]")
 [else]
-@ManyToOne(cascade={},fetch=javax.persistence.FetchType.EAGER)
+@ManyToOne(cascade={},fetch=FetchType.EAGER)
 [/if]
 private [a.type.name/] [a.name/];
 
@@ -152,6 +149,9 @@ private [a.type.name/] [a.name/];
 [template public classHeader(c : Class)]
 @Entity
 @Table(name="[c.name/]")//, schema="${schema}")
+@NamedQueries({
+	@NamedQuery(name="[c.name/].obtenerTodos", query="select e from [c.name/] e")
+})
 [c.visibility/] class [c.name/][c.extendsHeader()/][c.implementsHeader()/]
 [/template]
 
