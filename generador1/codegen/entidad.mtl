@@ -2,8 +2,8 @@
 
 [template public generate(c : Class)]
 [comment @main/]
-[file ('/src/' + c._package.qualifiedName.replaceAll('::', '/') +'/persistencia/entidades/'+ c.name + '.java', false, 'UTF-8')]
-package [c._package.qualifiedName.replaceAll('::', '.')/].persistencia.entidades;
+[file ('/src/main/java/' + c._package.qualifiedName.replaceAll('::', '/') +'/persistencia/entity/'+ c.name + '.java', false, 'UTF-8')]
+package [c._package.qualifiedName.replaceAll('::', '.')/].persistencia.entity;
 
 
 [if (c.attribute->exists(a : Property | a.isMany() and a.isOrdered))]
