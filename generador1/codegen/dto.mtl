@@ -13,7 +13,7 @@
 
 [template public generate(c : Class)]
 [comment @main/]
-[file ('/src/main/java/' + c.getQualifiedName().replaceAll('::', '/') + '.java', false, 'UTF-8')]
+[file ('/src/main/java/' + c._package.qualifiedName.replaceAll('::', '/') +'/dto/'+ c.name + '.java', false, 'UTF-8')]
 package [c.getQualifiedName().replaceAll('::', '.')/];
 
 [if (c.attribute->exists(a : Property | a.isMany() and a.isOrdered))]
