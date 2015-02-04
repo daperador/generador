@@ -2,7 +2,7 @@
 
 [template public generate(c : Class)]
 [comment @main/]
-[file ('/src/' + c._package.qualifiedName.replaceAll('::', '/') +'/servicio/'+ c.name + '.java', false, 'UTF-8')]
+[file ('/src/main/java/' + c._package.qualifiedName.replaceAll('::', '/') +'/servicio/'+ c.name + '.java', false, 'UTF-8')]
 package [c._package.qualifiedName.replaceAll('::', '.')/].servicio;
 
 import c._package.qualifiedName.replaceAll('::', '.')/].logica.*;

@@ -2,7 +2,7 @@
 
 [template public generate(c : Class)]
 [comment @main/]
-[file ('/src/' + c._package.qualifiedName.replaceAll('::', '/') +'/persistencia/entity/'+ c.name + '.java', false, 'UTF-8')]
+[file ('/src/main/java/' + c._package.qualifiedName.replaceAll('::', '/') +'/persistencia/entity/'+ c.name + '.java', false, 'UTF-8')]
 package [c._package.qualifiedName.replaceAll('::', '.')/].persistencia.entity;
 
 
