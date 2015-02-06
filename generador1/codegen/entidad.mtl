@@ -1,4 +1,4 @@
-[module entity('http://www.eclipse.org/uml2/4.0.0/UML')/]
+[module entidad('http://www.eclipse.org/uml2/4.0.0/UML')/]
 
 [template public generate(c : Class)]
 [comment @main/]
