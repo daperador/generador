@@ -13,12 +13,15 @@
 
 [template public generate(c : Class)]
 [comment @main/]
-[file ('/src/main/java/' + c._package.qualifiedName.replaceAll('::', '/') +'/dto/'+ c.name + '.java', false, 'UTF-8')]
-package [c.getQualifiedName().replaceAll('::', '.')/];
+[file ('/src/main/java/' + c._package.qualifiedName.replaceAll('::', '/') +'/dto/'+ c.name + 'DTO.java', false, 'UTF-8')]
+package [c._package.getQualifiedName().replaceAll('::', '.')/].dto;
 
 [if (c.attribute->exists(a : Property | a.isMany() and a.isOrdered))]
 import java.util.List;
 import java.util.ArrayList;
+[/if]
+[if (c.attribute->exists(a : Property | a.type.name='Date'))]
+import java.util.Date;
 [/if]
 [if (c.attribute->exists(a : Property | a.isMany() and not a.isOrdered))]
 import java.util.Set;
@@ -91,7 +94,7 @@ private [a.type.name/] [a.name/];
 /**
 * @generated
 */
-[a.visibility/] [a.type.name/] set[a.name.toUpperFirst()/]([a.type.name/] [a.name/]) {
+[a.visibility/] void set[a.name.toUpperFirst()/]([a.type.name/] [a.name/]) {
     this.[a.name/] = [a.name/];
 }
 
@@ -111,7 +114,7 @@ private [a.type.name/] [a.name/];
 /**
 * @generated
 */
-[a.visibility/] [a.type.name/] set[a.name.toUpperFirst()/]([a.type.name/] [a.name/]) {
+[a.visibility/] void set[a.name.toUpperFirst()/]([a.type.name/] [a.name/]) {
     this.[a.name/] = [a.name/];
 }
 

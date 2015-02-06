@@ -1,4 +1,4 @@
-[module entidad('http://www.eclipse.org/uml2/4.0.0/UML')/]
+[module entity('http://www.eclipse.org/uml2/4.0.0/UML')/]
 
 [template public generate(c : Class)]
 [comment @main/]
@@ -107,7 +107,7 @@ private [a.type.name/] [a.name/];
 /**
 * @generated
 */
-[a.visibility/] [a.type.name/] set[a.name.toUpperFirst()/]([a.type.name/] [a.name/]) {
+[a.visibility/] void set[a.name.toUpperFirst()/]([a.type.name/] [a.name/]) {
     this.[a.name/] = [a.name/];
 }
 
@@ -127,7 +127,7 @@ private [a.type.name/] [a.name/];
 /**
 * @generated
 */
-[a.visibility/] [a.type.name/] set[a.name.toUpperFirst()/]([a.type.name/] [a.name/]) {
+[a.visibility/] void set[a.name.toUpperFirst()/]([a.type.name/] [a.name/]) {
     this.[a.name/] = [a.name/];
 }
 
