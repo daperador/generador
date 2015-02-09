@@ -77,7 +77,7 @@ public [a.name/]DTO obtener[a.name/](@PathParam("id") Long id){
 * @generated
 */
 @POST
-public [a.name/] guardar[a.name/]([a.name/]DTO dto){
+public [a.name/]DTO guardar[a.name/]([a.name/]DTO dto){
 	return logica.guardar(dto);
 }
 

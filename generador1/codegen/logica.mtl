@@ -75,7 +75,7 @@ public [a.name/]DTO obtener(Long id){
 * @generated
 */
 public [a.name/]DTO guardar([a.name/]DTO dto){
-	return convertirEntidad(persistencia.guardar(convertir(dto)));
+	return convertirEntidad(persistencia.guardar(convertirDTO(dto)));
 }
 
 [/template]
@@ -129,8 +129,9 @@ private [c.name/] convertirDTO([c.name/]DTO dto){
 * @generated
 */
 private [c.name/]DTO convertirEntidad([c.name/] entidad){
-	[c.name/] dto=new [c.name/]();
+	[c.name/]DTO dto=new [c.name/]DTO();
 	[c.attribute.converterDTOAttribute()/]
+	return dto;
 }
 
 [/template]
@@ -151,7 +152,7 @@ private [c.name/]DTO convertirEntidad([c.name/] entidad){
 private List<[c.name/]> convertirDTO(List<[c.name/]DTO> dtos){
 	List<[c.name/]> entidades=new ArrayList<[c.name/]>();
 	for([c.name/]DTO dto:dtos){
-		entidades.add(convertir(dto));
+		entidades.add(convertirDTO(dto));
 	}
 	return entidades;
 }
@@ -166,7 +167,7 @@ private List<[c.name/]> convertirDTO(List<[c.name/]DTO> dtos){
 private List<[c.name/]DTO> convertirEntidad(List<[c.name/]> entidades){
 	List<[c.name/]DTO> dtos=new ArrayList<[c.name/]DTO>();
 	for([c.name/] entidad:entidades){
-		dtos.add(convertir(entidad));
+		dtos.add(convertirEntidad(entidad));
 	}
 	return dtos;
 }
