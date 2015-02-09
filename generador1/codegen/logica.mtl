@@ -54,7 +54,7 @@ import javax.ejb.Stateless;
 * @generated
 */
 public List<[a.name/]DTO> obtenerTodos(){
-	return convertir(persistencia.obtenerTodos());
+	return convertirEntidad(persistencia.obtenerTodos());
 }
 [/template]
 
@@ -64,7 +64,7 @@ public List<[a.name/]DTO> obtenerTodos(){
 * @generated
 */
 public [a.name/]DTO obtener(Long id){
-	return convertir(persistencia.obtener(id));
+	return convertirEntidad(persistencia.obtener(id));
 }
 
 [/template]
@@ -75,7 +75,7 @@ public [a.name/]DTO obtener(Long id){
 * @generated
 */
 public [a.name/]DTO guardar([a.name/]DTO dto){
-	return convertir(persistencia.guardar(convertir(dto)));
+	return convertirEntidad(persistencia.guardar(convertir(dto)));
 }
 
 [/template]
@@ -86,7 +86,7 @@ public [a.name/]DTO guardar([a.name/]DTO dto){
 * @generated
 */
 public void actualizar([a.name/]DTO dto){
-	persistencia.actualizar(convertir(dto)));
+	persistencia.actualizar(convertirDTO(dto));
 }
 
 [/template]
@@ -107,7 +107,7 @@ public void borrar(Long id){
 /**
 * @generated
 */
-private [c.name/] convertir([c.name/]DTO dto){
+private [c.name/] convertirDTO([c.name/]DTO dto){
 	[c.name/] entidad=new [c.name/]();
 	[c.attribute.converterDTOAttribute()/]
 	return entidad;
@@ -128,7 +128,7 @@ private [c.name/] convertir([c.name/]DTO dto){
 /**
 * @generated
 */
-private [c.name/]DTO convertir([c.name/] entidad){
+private [c.name/]DTO convertirEntidad([c.name/] entidad){
 	[c.name/] dto=new [c.name/]();
 	[c.attribute.converterDTOAttribute()/]
 }
@@ -148,9 +148,9 @@ private [c.name/]DTO convertir([c.name/] entidad){
 /**
 * @generated
 */
-private List<[c.name/]> convertir(List<[c.name/]DTO> dtos){
+private List<[c.name/]> convertirDTO(List<[c.name/]DTO> dtos){
 	List<[c.name/]> entidades=new ArrayList<[c.name/]>();
-	for([c.name/] dto:dtos){
+	for([c.name/]DTO dto:dtos){
 		entidades.add(convertir(dto));
 	}
 	return entidades;
@@ -163,7 +163,7 @@ private List<[c.name/]> convertir(List<[c.name/]DTO> dtos){
 /**
 * @generated
 */
-private List<[c.name/]DTO> convertir(List<[c.name/]> entidades){
+private List<[c.name/]DTO> convertirEntidad(List<[c.name/]> entidades){
 	List<[c.name/]DTO> dtos=new ArrayList<[c.name/]DTO>();
 	for([c.name/] entidad:entidades){
 		dtos.add(convertir(entidad));
