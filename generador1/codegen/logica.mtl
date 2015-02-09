@@ -54,7 +54,7 @@ import javax.ejb.Stateless;
 * @generated
 */
 public List<[a.name/]DTO> obtenerTodos(){
-	return convertir(persistencia.obtenerTodos[a.name/]s());
+	return convertir(persistencia.obtenerTodos());
 }
 [/template]
 
@@ -64,7 +64,7 @@ public List<[a.name/]DTO> obtenerTodos(){
 * @generated
 */
 public [a.name/]DTO obtener(Long id){
-	return convertir(persistencia.obtener[a.name/](id));
+	return convertir(persistencia.obtener(id));
 }
 
 [/template]
@@ -75,7 +75,7 @@ public [a.name/]DTO obtener(Long id){
 * @generated
 */
 public [a.name/]DTO guardar([a.name/]DTO dto){
-	return convertir(persistencia.guardar[a.name/](convertir(dto)));
+	return convertir(persistencia.guardar(convertir(dto)));
 }
 
 [/template]
@@ -86,7 +86,7 @@ public [a.name/]DTO guardar([a.name/]DTO dto){
 * @generated
 */
 public void actualizar([a.name/]DTO dto){
-	persistencia.actualizar[a.name/](convertir(dto)));
+	persistencia.actualizar(convertir(dto)));
 }
 
 [/template]

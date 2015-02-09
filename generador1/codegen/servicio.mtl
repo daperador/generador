@@ -54,7 +54,7 @@ import javax.ws.rs.core.*;
 */
 @GET
 public List<[a.name/]DTO> obtenerTodos[a.name/]s(){
-	return logica.obtenerTodos[a.name/]s();
+	return logica.obtenerTodos();
 }
 [/template]
 
@@ -66,7 +66,7 @@ public List<[a.name/]DTO> obtenerTodos[a.name/]s(){
 @GET
 @Path("/{id}")
 public [a.name/]DTO obtener[a.name/](@PathParam("id") Long id){
-	return convertir(persistencia.obtener[a.name/](id));
+	return logica.obtener(id);
 }
 
 [/template]
@@ -78,7 +78,7 @@ public [a.name/]DTO obtener[a.name/](@PathParam("id") Long id){
 */
 @POST
 public [a.name/] guardar[a.name/]([a.name/] dto){
-	return convertir(persistencia.guardar[a.name/](convertir(dto)));
+	return logica.guardar(convertir(dto)));
 }
 
 [/template]
@@ -91,7 +91,7 @@ public [a.name/] guardar[a.name/]([a.name/] dto){
 @PUT
 @Path("/{id}")
 public void actualizar[a.name/]([a.name/] dto){
-	persistencia.actualizar[a.name/](convertir(dto)));
+	logica.actualizar(convertir(dto)));
 }
 
 [/template]
