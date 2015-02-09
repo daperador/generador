@@ -19,7 +19,7 @@ import javax.ejb.Stateless;
   */
 [c.classHeader()/] {
 	@EJB
-    private [c.name/]Persistencia persistencia;
+    private [c.name/]DAO persistencia;
 
 	[c.getAll()/]
 	[c.getID()/]
@@ -53,7 +53,7 @@ import javax.ejb.Stateless;
 /**
 * @generated
 */
-public List<[a.name/]DTO> obtenerTodos[a.name/]s(){
+public List<[a.name/]DTO> obtenerTodos(){
 	return convertir(persistencia.obtenerTodos[a.name/]s());
 }
 [/template]
@@ -63,7 +63,7 @@ public List<[a.name/]DTO> obtenerTodos[a.name/]s(){
 /**
 * @generated
 */
-public [a.name/]DTO obtener[a.name/](Long id){
+public [a.name/]DTO obtener(Long id){
 	return convertir(persistencia.obtener[a.name/](id));
 }
 
@@ -74,7 +74,7 @@ public [a.name/]DTO obtener[a.name/](Long id){
 /**
 * @generated
 */
-public [a.name/]DTO guardar[a.name/]([a.name/]DTO dto){
+public [a.name/]DTO guardar([a.name/]DTO dto){
 	return convertir(persistencia.guardar[a.name/](convertir(dto)));
 }
 
@@ -85,7 +85,7 @@ public [a.name/]DTO guardar[a.name/]([a.name/]DTO dto){
 /**
 * @generated
 */
-public void actualizar[a.name/]([a.name/]DTO dto){
+public void actualizar([a.name/]DTO dto){
 	persistencia.actualizar[a.name/](convertir(dto)));
 }
 
@@ -96,7 +96,7 @@ public void actualizar[a.name/]([a.name/]DTO dto){
 /**
 * @generated
 */
-public [a.name/] borrar[a.name/](Long id){
+public void borrar(Long id){
 	persistencia.borrar(id);
 }
 

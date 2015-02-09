@@ -30,7 +30,7 @@ import javax.ejb.Stateless;
 
 [template public classHeader(c : Class)]
 @Stateless
-[c.visibility/] class [c.name/]Persistencia[c.extendsHeader()/][c.implementsHeader()/]
+[c.visibility/] class [c.name/]DAO[c.extendsHeader()/][c.implementsHeader()/]
 [/template]
 
 [template public extendsHeader(c : Class) ? (c.superClass->notEmpty())]
@@ -46,7 +46,7 @@ import javax.ejb.Stateless;
 /**
 * @generated
 */
-public List<[a.name/]> obtenerTodos[a.name/]s(){
+public List<[a.name/]> obtenerTodos(){
 	return em.createNamedQuery("[a.name/].obtenerTodos").getResultList();
 }
 [/template]
@@ -56,7 +56,7 @@ public List<[a.name/]> obtenerTodos[a.name/]s(){
 /**
 * @generated
 */
-public [a.name/] obtener[a.name/](Long id){
+public [a.name/] obtener(Long id){
 	return em.find([a.name/].class, id);
 }
 
@@ -67,8 +67,9 @@ public [a.name/] obtener[a.name/](Long id){
 /**
 * @generated
 */
-public [a.name/] guardar[a.name/]([a.name/] entidad){
-	return em.persist(entidad);
+public [a.name/] guardar([a.name/] entidad){
+	em.persist(entidad);
+	return entidad;
 }
 
 [/template]
@@ -78,7 +79,7 @@ public [a.name/] guardar[a.name/]([a.name/] entidad){
 /**
 * @generated
 */
-public void actualizar[a.name/]([a.name/] entidad){
+public void actualizar([a.name/] entidad){
 	em.merge(entidad);
 }
 
@@ -89,7 +90,7 @@ public void actualizar[a.name/]([a.name/] entidad){
 /**
 * @generated
 */
-public [a.name/] borrar[a.name/](Long id){
+public void borrar(Long id){
 	em.remove(em.find([a.name/].class, id));
 }
 
