@@ -5,9 +5,9 @@
 [file ('/src/main/java/' + c._package.qualifiedName.replaceAll('::', '/') +'/logica/'+ c.name + 'Logica.java', false, 'UTF-8')]
 package [c._package.qualifiedName.replaceAll('::', '.')/].logica;
 
-import c._package.qualifiedName.replaceAll('::', '.')/].dto.*;
-import c._package.qualifiedName.replaceAll('::', '.')/].persistencia.*;
-import c._package.qualifiedName.replaceAll('::', '.')/].persistencia.entity.*;
+import [c._package.qualifiedName.replaceAll('::', '.')/].dto.*;
+import [c._package.qualifiedName.replaceAll('::', '.')/].persistencia.*;
+import [c._package.qualifiedName.replaceAll('::', '.')/].persistencia.entity.*;
 import java.util.List;
 import java.util.ArrayList;
 import javax.persistence.*;
@@ -110,13 +110,14 @@ public [a.name/] borrar[a.name/](Long id){
 private [c.name/] convertir([c.name/]DTO dto){
 	[c.name/] entidad=new [c.name/]();
 	[c.attribute.converterDTOAttribute()/]
+	return entidad;
 }
 
 [/template]
 
 [template public converterDTOAttribute(a : Property)]
 [if(a.isAttribute())]
-	entity.set[a.name.toUpperFirst()/](dto.get[a.name.toUpperFirst()/]());
+	dto.set[a.name.toUpperFirst()/](dto.get[a.name.toUpperFirst()/]());
 [else]
 	//TODO: pendiente por implementar[a.name/]
 [/if]
@@ -136,7 +137,7 @@ private [c.name/]DTO convertir([c.name/] entidad){
 
 [template public converterEntityAttribute(a : Property)]
 [if(a.isAttribute())]
-	dto.set[a.name.toUpperFirst()/](entity.get[a.name.toUpperFirst()/]());
+	k.set[a.name.toUpperFirst()/](entity.get[a.name.toUpperFirst()/]());
 [else]
 	//TODO: pendiente por implementar[a.name/]
 [/if]

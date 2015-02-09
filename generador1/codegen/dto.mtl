@@ -72,7 +72,8 @@ private Set<[a.type.name/]> [a.name/];
 /**
 * @generated
 */
-private [a.type.name/] [a.name/];
+[if(a.isAttribute())]private [a.type.name/] [a.name/];
+[else]private [a.type.name/]DTO [a.name/];[/if]
 
 [/template]
 
@@ -103,7 +104,7 @@ private [a.type.name/] [a.name/];
 [comment Accessors for single element /]
 
 [template public accessors(a : Property)]
-
+[if(a.isAttribute())]
 /**
 * @generated
 */
@@ -117,7 +118,21 @@ private [a.type.name/] [a.name/];
 [a.visibility/] void set[a.name.toUpperFirst()/]([a.type.name/] [a.name/]) {
     this.[a.name/] = [a.name/];
 }
+[else]
+/**
+* @generated
+*/
+[a.visibility/] [a.type.name/]DTO get[a.name.toUpperFirst()/]() {
+    return this.[a.name/];
+}
 
+/**
+* @generated
+*/
+[a.visibility/] void set[a.name.toUpperFirst()/]([a.type.name/]DTO [a.name/]) {
+    this.[a.name/] = [a.name/];
+}
+[/if]
 [/template]
 
 

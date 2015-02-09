@@ -5,7 +5,7 @@
 [file ('/src/main/java/' + c._package.qualifiedName.replaceAll('::', '/') +'/persistencia/'+ c.name + 'DAO.java', false, 'UTF-8')]
 package [c._package.qualifiedName.replaceAll('::', '.')/].persistencia;
 
-import c._package.qualifiedName.replaceAll('::', '.')/].persistencia.entity.*;
+import [c._package.qualifiedName.replaceAll('::', '.')/].persistencia.entity.*;
 import java.util.List;
 import java.util.ArrayList;
 import javax.persistence.*;
