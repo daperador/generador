@@ -40,7 +40,7 @@ import javax.ws.rs.core.*;
 [/template]
 
 [template public extendsHeader(c : Class) ? (c.superClass->notEmpty())]
- extends [c.superClass.name/]
+ extends [c.superClass.name/]Servicio
 [/template]
 
 [template public implementsHeader(c : Class) ? (c.interfaceRealization->notEmpty())]
