@@ -108,6 +108,7 @@ public void borrar(Long id){
 * @generated
 */
 private [c.name/] convertirDTO([c.name/]DTO dto){
+	if(dto==null)return null;
 	[c.name/] entidad=new [c.name/]();
 	[c.attribute.converterDTOAttribute()/]
 	return entidad;
@@ -117,7 +118,7 @@ private [c.name/] convertirDTO([c.name/]DTO dto){
 
 [template public converterDTOAttribute(a : Property)]
 [if(a.isAttribute())]
-	dto.set[a.name.toUpperFirst()/](dto.get[a.name.toUpperFirst()/]());
+	entidad.set[a.name.toUpperFirst()/](dto.get[a.name.toUpperFirst()/]());
 [else]
 	//TODO: pendiente por implementar[a.name/]
 [/if]
@@ -130,7 +131,7 @@ private [c.name/] convertirDTO([c.name/]DTO dto){
 */
 private [c.name/]DTO convertirEntidad([c.name/] entidad){
 	[c.name/]DTO dto=new [c.name/]DTO();
-	[c.attribute.converterDTOAttribute()/]
+	[c.attribute.converterEntityAttribute()/]
 	return dto;
 }
 
@@ -138,7 +139,7 @@ private [c.name/]DTO convertirEntidad([c.name/] entidad){
 
 [template public converterEntityAttribute(a : Property)]
 [if(a.isAttribute())]
-	k.set[a.name.toUpperFirst()/](entity.get[a.name.toUpperFirst()/]());
+	dto.set[a.name.toUpperFirst()/](entidad.get[a.name.toUpperFirst()/]());
 [else]
 	//TODO: pendiente por implementar[a.name/]
 [/if]
