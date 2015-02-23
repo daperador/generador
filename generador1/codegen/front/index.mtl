@@ -1,0 +1,55 @@
+[module dao('http://www.eclipse.org/uml2/4.0.0/UML')/]
+
+[template public generate(c : Class)]
+[comment @main/]
+[file ('/src/main/webapp/'+c.name+'Index.html', false, 'UTF-8')]
+<!DOCTYPE html>
+<html ng-app="[c.name/]">
+    <head>
+        <title>Administraci&oacute;n [c.name/]</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+		<link href="css/bootstrap-datepicker.min.css" rel="stylesheet">        
+		<link href="css/main.css" rel="stylesheet">
+        
+        <script src="./js/jquery.min.js"></script>
+    </head>
+    <body>
+        <div class="content">
+            <div class="content-header">
+                <div class="boton-regresar">
+
+                </div>
+            </div>
+            <div class="content-body">
+                <div class="row menu-app">
+                    <div class="btn-group">
+                        <a href="#/Nuevo[c.name/]"><button type="button" class="btn btn-default">Nuevo [c.name/]</button></a>
+                    </div>
+                    <div class="btn-group">
+                        <a href="#/Lista[c.name/]"><button type="button" class="btn btn-default">Listar [c.name/]</button></a>
+                    </div>
+					<div class="btn-group">
+                        <a href="#/Reporte[c.name/]"><button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">Reporte [c.name/]</button></a>
+                    </div>
+                </div>
+                <div class="ng-scope" ng-view=""></div>
+            </div>
+            <div class="content-footer"></div>
+        </div>
+        
+		<script src="./lib/angular.min.js"></script>
+        <script src="./lib/angular-route.min.js"></script>
+        
+		<script src="./js/[c.name/]App.js"></script>
+        <script src="./js/[c.name/]Controller.js"></script>
+        
+		<script src="./js/bootstrap.min.js"></script>
+        <script src="./js/bootstrap-datepicker.js"></script>
+    </body>
+</html>
+
+[/file]
+[/template]

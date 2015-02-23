@@ -1,0 +1,21 @@
+[module dao('http://www.eclipse.org/uml2/4.0.0/UML')/]
+
+[template public generate(c : Class)]
+[comment @main/]
+[file ('/src/main/webapp/js/'+c.name+'Controller.js', false, 'UTF-8')]
+'use strict';
+
+/* Controllers */
+var module = angular.module('admin[c.name/].controllers', ['['/]]);
+
+module.controller('Nuevo[c.name/]Ctrl', ['['/]'$scope', '$filter', '$http', function ($scope, $filter, $http) {
+	
+}]);
+
+module.controller('Lista[c.name/]Ctrl', ['['/]'$scope', '$filter', '$http', function ($scope, $filter, $http) {
+	
+}]);
+
+module.controller('Reporte[c.name/]Ctrl', ['['/]'$scope', '$filter', '$http', function ($scope, $filter, $http) {
+	
+}]);

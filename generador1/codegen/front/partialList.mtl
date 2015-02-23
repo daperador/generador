@@ -1,0 +1,44 @@
+[module dao('http://www.eclipse.org/uml2/4.0.0/UML')/]
+
+[template public generate(c : Class)]
+[comment @main/]
+[file ('/src/main/webapp/'+c.name+'Index.html', false, 'UTF-8')]
+<div class="panel panel-primary" ng-hide="panelEditar">
+    <div class="panel-title principal-title">Parametrizaci&oacute;n de [c.name/]</div>
+    <div class="panel-body">
+        <table class="resultados">
+            <tr>
+                [c.attribute.headerTable()/]
+				<th>
+                    &nbsp;
+                </th>
+            </tr>
+            <tr ng-repeat="row in lista">
+                <td class="row">{{row.idAseguradora}}</td>
+                <td class="row">{{row.nitAseguradora}}</td>
+                <td class="row">{{row.nombre}}</td>
+                <td class="row">{{row.fechaInicio| date: 'dd/MM/yyyy'}}</td>
+                <td class="row">{{row.maxConsultas}} por cada {{row.uniTiempoDias}} D&iacute;as</td>
+                <td class="row">{{row.estadoAseguradora == 1 ? 'ACTIVO' : 'INACTIVO' }}
+                    <span class="glyphicon glyphicon-ok-circle verde" ng-show="row.estadoAseguradora == 1"></span>
+                    <span class="glyphicon glyphicon-remove-circle red" ng-show="row.estadoAseguradora != 1"></span>
+                </td>
+                <td class="row">
+                    <button type="button" class="btn btn-default" ng-click="editar(row)">
+                        <span class="glyphicon glyphicon-pencil"></span>Editar
+                    </button>
+                </td>
+            </tr>
+        </table>
+        <br/>
+    </div>
+</div>
+
+[/file]
+[/template]
+
+[template public headerTable(a : Property)]
+				<th>
+                    [a.name/]
+                </th>
+[/template]
