@@ -14,16 +14,8 @@
                 </th>
             </tr>
             <tr ng-repeat="row in lista">
-                <td class="row">{{row.idAseguradora}}</td>
-                <td class="row">{{row.nitAseguradora}}</td>
-                <td class="row">{{row.nombre}}</td>
-                <td class="row">{{row.fechaInicio| date: 'dd/MM/yyyy'}}</td>
-                <td class="row">{{row.maxConsultas}} por cada {{row.uniTiempoDias}} D&iacute;as</td>
-                <td class="row">{{row.estadoAseguradora == 1 ? 'ACTIVO' : 'INACTIVO' }}
-                    <span class="glyphicon glyphicon-ok-circle verde" ng-show="row.estadoAseguradora == 1"></span>
-                    <span class="glyphicon glyphicon-remove-circle red" ng-show="row.estadoAseguradora != 1"></span>
-                </td>
-                <td class="row">
+                [c.attribute.dataTable()/]
+				<td class="row">
                     <button type="button" class="btn btn-default" ng-click="editar(row)">
                         <span class="glyphicon glyphicon-pencil"></span>Editar
                     </button>
@@ -41,4 +33,12 @@
 				<th>
                     [a.name/]
                 </th>
+[/template]
+
+[template public dataTable(a : Property)]
+	[if(a.type.name.equalsIgnoreCase('Date'))]
+		<td class="row">{{row.[a.name/]| date: 'dd/MM/yyyy'}}</td>
+	[else]
+		<td class="row">{{row.[a.name/]}}</td>
+	[/if]                
 [/template]
