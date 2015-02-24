@@ -2,7 +2,7 @@
 
 [template public generate(c : Class)]
 [comment @main/]
-[file ('/src/main/webapp/'+c.name+'Index.html', false, 'UTF-8')]
+[file ('/src/main/webapp/'+c.name+'.html', false, 'UTF-8')]
 <!DOCTYPE html>
 <html ng-app="[c.name/]">
     <head>
