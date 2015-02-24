@@ -1,0 +1,231 @@
+[module dao('http://www.eclipse.org/uml2/4.0.0/UML')/]
+
+[template public generate(c : Class)]
+[comment @main/]
+[file ('/src/main/webapp/'+c.name+'Index.html', false, 'UTF-8')]
+<div class="panel panel-primary" ng-hide="panelEditar">
+    <div class="panel-title principal-title">Parametrizaci&oacute;n de [c.name/]</div>
+    <div class="panel-body">
+        <table class="resultados">
+            <tr>
+                [c.attribute.headerTable()/]
+				<th>
+                    &nbsp;
+                </th>
+            </tr>
+            <tr ng-repeat="row in lista">
+                [c.attribute.dataTable()/]
+				<td class="row">
+                    <button type="button" class="btn btn-default" ng-click="editar(row)">
+                        <span class="glyphicon glyphicon-pencil"></span>Editar
+                    </button>
+                </td>
+            </tr>
+        </table>
+        <br/>
+    </div>
+</div>
+
+<div class="panel panel-primary" ng-show="panelEditar">
+    <div class="panel-title principal-title">Parametrizaci&oacute;n de [c.name/]</div>
+    <div class="panel-body">
+        <form role="form" id="formularioEditar">
+                
+				
+
+
+                <div class="row">
+                    <div class="form-group col-md-6" ng-class="errores.nombreAseg?'error':''">
+                        <label>Nombre de la aseguradora</label>
+                        <input id="nombre" 
+                               class="form-control required" 
+                               required="true"
+                               ng-maxlength="200"
+                               ng-required="true"
+                               type="text" 
+                               ng-model="datosFormulario.nombre"/>
+                        <div ng-show="errores.nombreAseg">{{errores.nombreAseg}}</div>
+                    </div>
+                    <div class="form-group col-md-6" ng-class="errores.maxConAseg?'error':''">
+                        <label>Maximo numero de consultas permitidas</label>
+                        <input id="maxConsultas" 
+                               class="form-control required" 
+                               required="true"
+                               ng-required="true"
+                               ng-maxlength="8"
+                               type="number"
+                               ng-model="datosFormulario.maxConsultas"/>
+                        <div ng-show="errores.maxConAseg">{{errores.maxConAseg}}</div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col-md-6" ng-class="errores.uniTiempoAseg?'error':''">
+                        <label>Unidad de tiempo en dias</label>
+                        <input id="uniTiempoDias" 
+                               class="form-control required" 
+                               required="true"
+                               ng-required="true"
+                               type="number"
+                               ng-maxlength="5"
+                               ng-model="datosFormulario.uniTiempoDias"/>
+                        <div ng-show="errores.uniTiempoAseg">{{errores.uniTiempoAseg}}</div>
+                    </div>
+                    <div class="form-group col-md-6" ng-class="errores.fechaInicio?'error':''">
+                        <label>Fecha Inicio (dd/mm/aaaa)</label>
+                        <input id="fechaInicio" 
+                               class="form-control datepicker required" 
+                               type="text" 
+                               ng-maxlength="10"
+                               required="true"
+                               ng-model="datosFormulario.fechaInicio"
+                               ng-required="true"/>
+                        <div ng-show="errores.fechaInicio">{{errores.fechaInicio}}</div>
+                        <script>
+                                    var dp1 = $('#fechaInicio').datepicker({format: 'dd/mm/yyyy'}).on('changeDate', function (ev) {
+                                        dp1.hide();
+                                    }).data('datepicker');
+                        </script>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col-md-6" ng-class="errores.habeasData?'error':''">
+                        <label>Cuenta con convenio Habeas Data?:</label>
+                        <select id="habeasData" class="form-control required"
+                                ng-model="datosFormulario.habeasData"
+                                required="true"
+                                ng-required="true"
+                                ng-options="habea.shade as habea.name for habea in habeas">
+                        </select>
+                        <div ng-show="errores.habeasData">{{errores.habeasData}}</div>
+                    </div>
+                    <div class="form-group col-md-6" ng-class="errores.fotoMulta?'error':''">
+                        <label>Hace parte del Grupo Foto Multa?:</label>
+                        <select id="fotoMulta" class="form-control required"
+                                ng-model="datosFormulario.fotoMulta"
+                                required="true"
+                                ng-required="true"
+                                ng-options="fotom.shade as fotom.name for fotom in fotoms">
+                        </select>
+                        <div ng-show="errores.fotoMulta">{{errores.fotoMulta}}</div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col-md-6" ng-class="errores.estadoAseguradora?'error':''">
+                        <label>Estado:</label>
+                        <select id="estadoAseguradora" class="form-control required"
+                                ng-model="datosFormulario.estadoAseguradora"
+                                required="true"
+                                ng-required="true"
+                                ng-options="estado.shade as estado.name for estado in estados">
+                        </select>
+                        <div ng-show="errores.estadoAseguradora">{{errores.estadoAseguradora}}</div>
+                    </div>
+                </div>
+            </div>
+            <div class="panel-title">Informaci&oacute;n de seguridad</div>
+            <div class="panel panel-primary">
+                <div class="row">
+                    <div class="form-group col-md-6" ng-class="errores.ipAseg?'error':''">
+                        <label>Direccion ip desde donde se consume el servicio</label>
+                        <input id="ipAseguradora" 
+                               class="form-control required" 
+                               required="true"
+                               ng-required="true"
+                               type="text"
+                               ng-pattern="/^(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/"
+                               placeholder="XXX.XXX.XXX.XXX"
+                               ng-model="datosFormulario.ipAseguradora"/>
+                        <div ng-show="errores.ipAseg">{{errores.ipAseg}}</div>
+                    </div>
+                    <div class="form-group col-md-6" ng-class="errores.archivo?'error':''">
+                        <label>Certificado de seguridad</label> 
+                        <P>
+                            <button ng-click="seleccionarArchivo()" class="btn btn-default"><span class="glyphicon glyphicon-search"></span>Examinar</button><span id="archivo" class="archivo"></span>
+                        </p>
+                        <div ng-show="errores.archivo">{{errores.archivo}}</div>
+                    </div>
+
+                </div>
+                <div class="row">
+                    <div class="form-group col-md-5">
+                        <span>Permisos Disponibles</span>
+                        <select id="gruposDisponibles" class="form-control"
+                                data-ng-model="grupo" size="12"
+                                data-ng-options="grupo.nombreGrupo for grupo in lista.grupo track by grupo.idGrupo">
+                        </select>
+                    </div>
+                    <div class="form-group col-md-2">
+                        <ul class="nav nav-pills nav-stacked ">
+                            <li><a ng-click="adicionarGrupo()">&gt;</a></li>
+                            <li><a ng-click="adicionarTodosGrupo()">&gt;&gt;</a></li>
+                            <li><a ng-click="retirarTodosGrupo()">&lt;&lt;</a></li>
+                            <li><a ng-click="retirarGrupo()">&lt;</a></li>
+                        </ul>
+
+                    </div>
+                    <div class="form-group col-md-5">
+                        <span>Permisos Asignados</span>
+                        <select id="grupo" class="form-control"
+                                data-ng-model="grupo1" size="12"
+                                data-ng-options="seleccionGrupo.nombreGrupo for seleccionGrupo in datosFormulario.grupos track by seleccionGrupo.idGrupo">
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="btn-group">
+                <button type="button" class="btn btn-default" ng-click="guardar()" ng-show="!nuevoRegistro">Aceptar</button>
+                <button type="button" class="btn btn-default" ng-click="cancelar()">Cancelar</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+[/file]
+[/template]
+
+[template public headerTable(a : Property)]
+				<th>
+                    [a.name/]
+                </th>
+[/template]
+
+[template public dataTable(a : Property)]
+	[if(a.type.name.equalsIgnoreCase('Date'))]
+		<td class="row">{{row.[a.name/]| date: 'dd/MM/yyyy'}}</td>
+	[else]
+		<td class="row">{{row.[a.name/]}}</td>
+	[/if]                
+[/template]
+
+[template public fieldDef(a : Property)]
+				<div class="row">
+                    <div class="form-group col-md-6" ng-class="errores.idAseg?'error':''">
+                        <label>[a.name/]</label>
+[if(a.type.name.equalsIgnoreCase('Date'))]
+						<input id="[a.name/]" 
+                               class="form-control datepicker" 
+                               type="text" 
+                               ng-model="datosFormulario.[a.name/]"/>
+                        <script>
+                                    var dp_[a.name/] = $('#[a.name/]').datepicker({format: 'dd/mm/yyyy'}).on('changeDate', function (ev) {
+                                        dp_[a.name/].hide();
+                                    }).data('datepicker');
+                        </script>
+[elseif(a.type.name.equalsIgnoreCase('Boolean'))]
+						<input id="[a.name/]" 
+							   type="check"
+                               class="form-control" 
+                               ng-model="datosFormulario.[a.name/]"/>
+
+[else]
+                        <input id="[a.name/]" 
+                               class="form-control" 
+							   type="text"
+                               ng-model="datosFormulario.[a.name/]"/>
+
+[/if]
+                        <div ng-show="errores.[a.name/]">{{errores.[a.name/]}}</div>
+                    </div>
+                </div>
+[/template]
