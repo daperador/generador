@@ -7,4 +7,8 @@
   <m2t name="logica.mtl"/>
   <m2t name="pom.mtl"/>
   <m2t name="servicio.mtl"/>
+  <m2t name="front/app.mtl"/>
+  <m2t name="front/controller.mtl"/>
+  <m2t name="front/index.mtl"/>
+  <m2t name="front/partial.mtl"/>
 </generator>
