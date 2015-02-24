@@ -80,3 +80,4 @@ module.controller('[c.name/]Ctrl', ['['/]'$scope', '$filter', '$http', function 
 	
 	};
 }]);
+[/template]
