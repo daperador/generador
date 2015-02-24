@@ -29,10 +29,10 @@ module.controller('[c.name/]Ctrl', ['['/]'$scope', '$filter', '$http', function 
     $scope.guardar = function () {
 		$scope.errores = {};
 		var error = false;
-
+		/*
         if ($('#fechaInicio').val()) {
             var parts = $('#fechaInicio').val().split('/');
-            var mydate = new Date(parts[2], parts[1] - 1, parts[0]);
+            var mydate = new Date(parts['[2]'/], parts['[1]'/] - 1, parts['[0]'/]);
             $scope.datosFormulario.fechaInicio = $filter('date')(mydate, 'dd/MM/yyyy');
         }
         
@@ -40,6 +40,7 @@ module.controller('[c.name/]Ctrl', ['['/]'$scope', '$filter', '$http', function 
             $scope.errores.idAseg = "Debe ingresar un identificador unico para la aseguradora";
             error = true;
         }
+		*/
         if (error)
             return;
         if ($scope.nuevoRegistro) {
