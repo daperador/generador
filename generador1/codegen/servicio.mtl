@@ -89,7 +89,6 @@ public [a.name/]DTO guardar[a.name/]([a.name/]DTO dto){
 * @generated
 */
 @PUT
-@Path("/{id}")
 public void actualizar[a.name/]([a.name/]DTO dto){
 	logica.actualizar(dto);
 }

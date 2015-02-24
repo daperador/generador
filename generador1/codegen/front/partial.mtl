@@ -2,7 +2,7 @@
 
 [template public generate(c : Class)]
 [comment @main/]
-[file ('/src/main/webapp/'+c.name+'Index.html', false, 'UTF-8')]
+[file ('/src/main/webapp/partials/'+c.name+'.html', false, 'UTF-8')]
 <div class="panel panel-primary" ng-hide="panelEditar">
     <div class="panel-title principal-title">Parametrizaci&oacute;n de [c.name/]</div>
     <div class="panel-body">

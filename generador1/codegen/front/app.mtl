@@ -12,10 +12,8 @@ var module=angular.module('admin[c.name/]', ['['/]
   'adminAseguradoras.controllers'
 ]);
 module.config(['['/]'$routeProvider', function($routeProvider) {
-  $routeProvider.when('/Nuevo[c.name/]', {templateUrl: 'partials/[c.name/]/Nuevo.html', controller: 'Nuevo[c.name/]Ctrl'});
-  $routeProvider.when('/Lista[c.name/]', {templateUrl: 'partials/[c.name/]/Lista.html', controller: 'Lista[c.name/]Ctrl'});
-  $routeProvider.when('/Reporte[c.name/]', {templateUrl: 'partials/[c.name/]/Reporte.html', controller: 'Reporte[c.name/]Ctrl'});
-  $routeProvider.otherwise({redirectTo: '/Lista[c.name/]'}); 
+  $routeProvider.when('/[c.name/]', {templateUrl: 'partials/[c.name/].html', controller: '[c.name/]Ctrl'});
+  $routeProvider.otherwise({redirectTo: '/[c.name/]'}); 
 }]);
 [/file]
 [/template]
