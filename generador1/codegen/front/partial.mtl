@@ -1,4 +1,4 @@
-[module dao('http://www.eclipse.org/uml2/4.0.0/UML')/]
+[module partial('http://www.eclipse.org/uml2/4.0.0/UML')/]
 
 [template public generate(c : Class)]
 [comment @main/]
