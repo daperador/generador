@@ -77,7 +77,7 @@ module.controller('[c.name/]Ctrl', ['['/]'$scope', '$filter', '$http', function 
         $scope.datosFormulario = data;
     };
 	//eliminar
-	$scope.eliminar = functon (data){
+	$scope.eliminar = function (data){
 	
 	};
 }]);
