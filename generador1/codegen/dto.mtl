@@ -16,16 +16,14 @@
 [file ('/src/main/java/' + c._package.qualifiedName.replaceAll('::', '/') +'/dto/'+ c.name + 'DTO.java', false, 'UTF-8')]
 package [c._package.getQualifiedName().replaceAll('::', '.')/].dto;
 
-[if (c.attribute->exists(a : Property | a.isMany() and a.isOrdered))]
+[if (c.attribute->exists(a : Property | a.isMany()))]
 import java.util.List;
 import java.util.ArrayList;
 [/if]
+import java.util.List;
+import java.util.ArrayList;
 [if (c.attribute->exists(a : Property | a.type.name='Date'))]
 import java.util.Date;
-[/if]
-[if (c.attribute->exists(a : Property | a.isMany() and not a.isOrdered))]
-import java.util.Set;
-import java.util.HashSet;
 [/if]
 
 /**
@@ -53,15 +51,6 @@ import java.util.HashSet;
 * @generated
 */
 private List<[a.type.name/]> [a.name/];
-
-[/template]
-
-[template public generate(a : Property) ? (a.isMany() and not a.isOrdered)]
-
-/**
-* @generated
-*/
-private Set<[a.type.name/]> [a.name/];
 
 [/template]
 

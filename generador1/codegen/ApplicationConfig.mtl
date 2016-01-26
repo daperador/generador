@@ -1,0 +1,40 @@
+[module gsonBodyHandler('http://www.eclipse.org/uml2/4.0.0/UML')/]
+
+[template public generate(p : Package)]
+[comment @main/]
+[file ('/src/main/java/org/netbeans/rest/application/config/servicios/util/ApplicationConfig.java', false, 'UTF-8')]
+package [p.qualifiedName.replaceAll('::', '.')/].servicios.util;
+
+package org.netbeans.rest.application.config;
+
+import java.util.Set;
+import javax.ws.rs.core.Application;
+import [p.qualifiedName.replaceAll('::', '.')/].servicio.*;
+import [p.qualifiedName.replaceAll('::', '.')/].servicio.util.GsonMessageBodyHandler;
+
+/**
+ *
+ * @author daniel
+ */
+@javax.ws.rs.ApplicationPath("webresources")
+public class ApplicationConfig extends Application {
+
+    @Override
+    public Set<Class<?>> getClasses() {
+        Set<Class<?>> resources = new java.util.HashSet<Class<?>>();
+        addRestResourceClasses(resources);
+        return resources;
+    }
+    
+    private void addRestResourceClasses(Set<Class<?>> resources) {
+        resources.add(EstudianteServicio.class);
+		resources.add(CursoServicio.class);
+		resources.add(SeccionServicio.class);
+        resources.add(GsonMessageBodyHandler.class);
+        
+    }
+    
+}
+
+[/file]
+[/template]
