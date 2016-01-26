@@ -6,13 +6,9 @@
 package [c._package.qualifiedName.replaceAll('::', '.')/].persistencia.entity;
 
 
-[if (c.attribute->exists(a : Property | a.isMany() and a.isOrdered))]
+[if (c.attribute->exists(a : Property | a.isMany()))]
 import java.util.List;
 import java.util.ArrayList;
-[/if]
-[if (c.attribute->exists(a : Property | a.isMany() and not a.isOrdered))]
-import java.util.Set;
-import java.util.HashSet;
 [/if]
 [if (c.attribute->exists(a : Property | a.type.name.equalsIgnoreCase('Date')))]
 import java.util.Date;
@@ -52,23 +48,13 @@ import javax.persistence.*;
 
 [comment Collections /]
 
-[template public generate(a : Property) ? (a.isMany() and a.isOrdered)]
+[template public generate(a : Property) ? (a.isMany())]
 
 /**
 * @generated
 */
 @OneToMany(cascade={},fetch=javax.persistence.FetchType.Lazy)
 private List<[a.type.name/]> [a.name/];
-
-[/template]
-
-[template public generate(a : Property) ? (a.isMany() and not a.isOrdered)]
-
-/**
-* @generated
-*/
-@OneToMany(cascade={},fetch=javax.persistence.FetchType.Lazy)
-private Set<[a.type.name/]> [a.name/];
 
 [/template]
 
@@ -92,7 +78,7 @@ private [a.type.name/] [a.name/];
 [comment Accessors for Collection /]
 
 
-[template public accessors(a : Property) ? (a.isMany() and a.isOrdered)]
+[template public accessors(a : Property) ? (a.isMany())]
 
 /**
 * @generated
