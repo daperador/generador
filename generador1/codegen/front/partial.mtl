@@ -3,10 +3,19 @@
 [template public generate(c : Class)]
 [comment @main/]
 [file ('/src/main/webapp/partials/'+c.name+'.html', false, 'UTF-8')]
+
+<div class="row menu-app">
+	<div class="btn-group">
+		<button type="button" class="btn btn-default" ng-click="nuevo()">Nuevo [c.name/]</button>
+		<button type="button" class="btn btn-default" ng-click="cancelar()">Listar [c.name/]</button>
+		<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" ng-click="">Reporte [c.name/]</button>
+	</div>
+</div>
+				
 <div class="panel panel-primary" ng-hide="panelEditar">
     <div class="panel-title principal-title">Parametrizaci&oacute;n de [c.name/]</div>
     <div class="panel-body">
-        <table class="resultados">
+        <table class="resultados table table-striped">
             <tr>
                 [c.attribute.headerTable()/]
 				<th>

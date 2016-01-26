@@ -9,11 +9,11 @@
 // Declare app level module which depends on filters, and services
 var module=angular.module('admin[c.name/]', ['['/]
   'ngRoute',
-  'adminAseguradoras.controllers'
+  'admin[c.name/].controllers'
 ]);
 module.config(['['/]'$routeProvider', function($routeProvider) {
-  $routeProvider.when('/[c.name/]', {templateUrl: 'partials/[c.name/].html', controller: '[c.name/]Ctrl'});
-  $routeProvider.otherwise({redirectTo: '/[c.name/]'}); 
+  $routeProvider.when('/', {templateUrl: 'partials/[c.name/].html', controller: '[c.name/]Ctrl'});
+  $routeProvider.otherwise({redirectTo: '/'}); 
 }]);
 [/file]
 [/template]
