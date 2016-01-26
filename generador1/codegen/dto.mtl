@@ -50,9 +50,16 @@ import java.util.Date;
 /**
 * @generated
 */
-private List<[a.type.name/]>DTO [a.name/];
+private List<[a.type.name/]DTO> [a.name/];
 
-public List<[a.type.name/]>DTO get[a.name/]DTO(){
+public List<[a.type.name/]DTO> get[a.name.toUpperFirst()/](){
+	if(this.[a.name/]==null){
+		[a.name/]=new ArrayList<[a.type.name/]DTO>();
+	}
+	return [a.name/];
+}
+
+public void set[a.name.toUpperFirst()/](List<[a.type.name/]DTO> [a.name/]){
 	if(this.[a.name/]==null){
 		[a.name/]=new ArrayList<[a.type.name/]DTO>();
 	}
