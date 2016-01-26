@@ -45,12 +45,19 @@ import java.util.Date;
 
 [comment Collections /]
 
-[template public generate(a : Property) ? (a.isMany() and a.isOrdered)]
+[template public generate(a : Property) ? (a.isMany())]
 
 /**
 * @generated
 */
-private List<[a.type.name/]> [a.name/];
+private List<[a.type.name/]>DTO [a.name/];
+
+public List<[a.type.name/]>DTO get[a.name/]DTO(){
+	if(this.[a.name/]==null){
+		[a.name/]=new ArrayList<[a.type.name/]DTO>();
+	}
+	return [a.name/];
+}
 
 [/template]
 

@@ -3,14 +3,13 @@
 [template public generate(p : Package)]
 [comment @main/]
 [file ('/src/main/java/org/netbeans/rest/application/config/ApplicationConfig.java', false, 'UTF-8')]
-package [p.qualifiedName.replaceAll('::', '.')/].servicios.util;
 
 package org.netbeans.rest.application.config;
 
 import java.util.Set;
 import javax.ws.rs.core.Application;
 import [p.qualifiedName.replaceAll('::', '.')/].servicio.*;
-import [p.qualifiedName.replaceAll('::', '.')/].servicio.util.GsonMessageBodyHandler;
+import [p.qualifiedName.replaceAll('::', '.')/].servicios.util.GsonMessageBodyHandler;
 
 /**
  *
