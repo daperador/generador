@@ -41,6 +41,7 @@
         <form role="form" id="formularioEditar">
             [c.attribute.fieldDef()/]
             <div class="btn-group">
+				<button type="button" class="btn btn-default" ng-click="guardar()" ng-show="nuevoRegistro">Guardar</button>
                 <button type="button" class="btn btn-default" ng-click="guardar()" ng-show="!nuevoRegistro">Aceptar</button>
                 <button type="button" class="btn btn-default" ng-click="cancelar()">Cancelar</button>
             </div>
