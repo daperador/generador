@@ -33,12 +33,7 @@ import java.util.Date;
     [c.attribute.generate()/]
     [c.getAssociations().navigableOwnedEnd->select(type <> c).generate()/]
     [c.attribute.accessors()/]
-[if (c.ownedOperation->notEmpty())]
-
-    //                          Operations                                  
-    
-    [c.ownedOperation.generate()/]
-[/if]
+	[c.getAssociations().navigableOwnedEnd->select(type <> c).accessors()/]
 }
 [/file]
 [/template]
@@ -60,10 +55,7 @@ public List<[a.type.name/]DTO> get[a.name.toUpperFirst()/](){
 }
 
 public void set[a.name.toUpperFirst()/](List<[a.type.name/]DTO> [a.name/]){
-	if(this.[a.name/]==null){
-		[a.name/]=new ArrayList<[a.type.name/]DTO>();
-	}
-	return [a.name/];
+	this.[a.name/]=[a.name/];
 }
 
 [/template]

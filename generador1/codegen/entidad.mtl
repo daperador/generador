@@ -36,6 +36,7 @@ import javax.persistence.*;
     [c.attribute.generate()/]
     [c.getAssociations().navigableOwnedEnd->select(type <> c).generate()/]
     [c.attribute.accessors()/]
+	[c.getAssociations().navigableOwnedEnd->select(type <> c).accessors()/]
 }
 [/file]
 [/template]
