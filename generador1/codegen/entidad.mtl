@@ -6,7 +6,7 @@
 package [c._package.qualifiedName.replaceAll('::', '.')/].persistencia.entity;
 
 
-[if (c.attribute->exists(a : Property | a.isMany()))]
+[if (c.getAssociations().navigableOwnedEnd->exists(a : Property | a.isMany()))]
 import java.util.List;
 import java.util.ArrayList;
 [/if]
@@ -75,6 +75,22 @@ private [a.type.name/] [a.name/];
 [/template]
 
 
+[comment Accessor many elements/]
+[template public accessors(a : Property) ? (a.isMany())]
+
+public List<[a.type.name/]> get[a.name.toUpperFirst()/](){
+	if([a.name/]){
+		[a.name/]=new ArrayList<[a.type.name/]>(); 
+	}
+	return this.[a.name/];
+}
+
+public void set[a.name.toUpperFirst()/](List<[a.type.name/]> [a.name/]){
+	this.[a.name/]=[a.name/];
+}
+
+[/template]
+
 [comment Accessors for single element /]
 
 [template public accessors(a : Property)]
@@ -94,23 +110,6 @@ private [a.type.name/] [a.name/];
 }
 
 [/template]
-
-[comment Accessor many elements/]
-[template public accessors(a : Property) ? (a.isMany())]
-
-public List<[a.type.name/]> get[a.name.toUpperFirst()/](){
-	if([a.name/]){
-		[a.name/]=new ArrayList<[a.type.name/]>(); 
-	}
-	return this.[a.name/];
-}
-
-public void set[a.name.toUpperFirst()/](List<[a.type.name/]> [a.name/]){
-	this.[a.name/]=[a.name/];
-}
-
-[/template]
-
 
 [template public classHeader(c : Class)]
 @Entity
