@@ -47,6 +47,7 @@ import javax.persistence.*;
 
 /**
 * @generated
+* [a.lower/]-[a.upper/]-[a.isMany()/] 
 */
 @OneToMany(cascade={},fetch=javax.persistence.FetchType.LAZY)
 private List<[a.type.name/]> [a.name/];
@@ -57,8 +58,11 @@ private List<[a.type.name/]> [a.name/];
 
 [template public generate(a : Property)]
 
+
+
 /**
 * @generated
+* [a.lower/]-[a.upper/]-[a.isMany()/]
 */
 [if(a.isAttribute())]
 [if(a.type.name.equalsIgnoreCase('Date')) ]@Temporal(TemporalType.DATE)[/if]
