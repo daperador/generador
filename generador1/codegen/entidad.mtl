@@ -56,9 +56,7 @@ private List<[a.type.name/]> [a.name/];
 
 [comment Single properties /]
 
-[template public generate(a : Property)]
-
-
+[template public generate(a : Property) ? (not a.isMany())]
 
 /**
 * @generated
@@ -93,7 +91,7 @@ public void set[a.name.toUpperFirst()/](List<[a.type.name/]> [a.name/]){
 
 [comment Accessors for single element /]
 
-[template public accessors(a : Property)]
+[template public accessors(a : Property) ? (not a.isMany())]
 
 /**
 * @generated
