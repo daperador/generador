@@ -62,8 +62,7 @@
                                     Parametrizar <b class="caret"></b>
                                 </a>
                                 <ul class="dropdown-menu">
-									[for(c:Class|p.packagedElement->select(oclIsKindOf(Class)))]<li><a onclick="accionMenu('[c.name/].html#/')">[c.name/]</a></li>
-									[/for]
+									[p.packagedElement->filter(Class).generate()/]
                                 </ul>
                             </li>
                         </ul>
@@ -89,4 +88,8 @@
 </html>
 
 [/file]
+[/template]
+
+[template public generate(c : Class)]
+<li><a onclick="accionMenu('[c.name/].html#/')">[c.name/]</a></li>
 [/template]
