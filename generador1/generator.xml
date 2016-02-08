@@ -12,5 +12,6 @@
   <m2t name="front/app.mtl"/>
   <m2t name="front/controller.mtl"/>
   <m2t name="front/index.mtl"/>
+  <m2t name="front/index2.mtl"/>
   <m2t name="front/partial.mtl"/>
 </generator>
