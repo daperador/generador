@@ -3,13 +3,10 @@
 [template public generate(c : Class)]
 [comment @main/]
 [file ('/src/main/webapp/partials/'+c.name+'.html', false, 'UTF-8')]
-
-<div class="row menu-app">
-	<div class="btn-group">
-		<button type="button" class="btn btn-default" ng-click="nuevo()">Nuevo [c.name/]</button>
-		<button type="button" class="btn btn-default" ng-click="cancelar()">Listar [c.name/]</button>
-		<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" ng-click="">Reporte [c.name/]</button>
-	</div>
+<div class="btn-group">
+	<button type="button" class="btn btn-default" ng-click="nuevo()">Nuevo [c.name/]</button>
+	<button type="button" class="btn btn-default" ng-click="cancelar()">Listar [c.name/]</button>
+	<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" ng-click="">Reporte [c.name/]</button>
 </div>
 				
 <div class="panel panel-primary" ng-hide="panelEditar">
@@ -27,6 +24,9 @@
 				<td class="row">
                     <button type="button" class="btn btn-default" ng-click="editar(row)">
                         <span class="glyphicon glyphicon-pencil"></span>Editar
+                    </button>
+					<button type="button" class="btn btn-default" ng-click="eliminar(row)">
+                        <span class="glyphicon glyphicon-remove"></span>Eliminar
                     </button>
                 </td>
             </tr>

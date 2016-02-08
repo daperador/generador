@@ -9,7 +9,6 @@ package org.netbeans.rest.application.config;
 import java.util.Set;
 import javax.ws.rs.core.Application;
 import [p.qualifiedName.replaceAll('::', '.')/].servicio.*;
-import [p.qualifiedName.replaceAll('::', '.')/].servicios.util.GsonMessageBodyHandler;
 
 /**
  *
@@ -29,7 +28,6 @@ public class ApplicationConfig extends Application {
         resources.add(EstudianteServicio.class);
 		resources.add(CursoServicio.class);
 		resources.add(SeccionServicio.class);
-        resources.add(GsonMessageBodyHandler.class);
         
     }
     

@@ -41,6 +41,7 @@ module.controller('[c.name/]Ctrl', ['['/]'$scope', '$filter', '$http', function 
             ).success(function (data, status, headers, config) {
                 alert("Los datos han sido guardados con Exito");
                 $scope.panelEditar = false;
+				$scope.listar();
             }).error(function (data, status, headers, config) {
                 alert('Error al guardar la información, por favor intente más tarde');
             });
@@ -50,8 +51,7 @@ module.controller('[c.name/]Ctrl', ['['/]'$scope', '$filter', '$http', function 
             ).success(function (data, status, headers, config) {
                 alert("Los datos han sido guardados con Exito");
                 $scope.panelEditar = false;
-                $scope.datosFormulario = {};
-                $scope.actualizarInformacion();
+                $scope.listar();
             }).error(function (data, status, headers, config) {
                 alert('Error al actualizar la información, por favor intente más tarde');
             });

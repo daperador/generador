@@ -77,7 +77,7 @@ private [a.type.name/] [a.name/];
 [template public accessors(a : Property) ? (a.isMany())]
 
 public List<[a.type.name/]> get[a.name.toUpperFirst()/](){
-	if([a.name/]){
+	if([a.name/]!=null){
 		[a.name/]=new ArrayList<[a.type.name/]>(); 
 	}
 	return this.[a.name/];
