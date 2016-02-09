@@ -44,9 +44,9 @@ import java.util.Date;
     }
 	
     [c.attribute.generate()/]
-    [c.getAssociations().navigableOwnedEnd->select(type <> c).generate()/]
+    [c.getAssociations().navigableOwnedEnd->select(type <> c).generate() /]
     [c.attribute.accessors()/]
-	[c.getAssociations().navigableOwnedEnd->select(type <> c).accessors()/]
+	[c.getAssociations().navigableOwnedEnd->select(type <> c).accessors() /]
 }
 [/file]
 [/template]
@@ -58,7 +58,7 @@ import java.util.Date;
 /**
 * @generated
 */
-private List<[a.type.name/]DTO> [a.name/];
+/*private List<[a.type.name/]DTO> [a.name/];
 
 public List<[a.type.name/]DTO> get[a.name.toUpperFirst()/](){
 	if(this.[a.name/]==null){
@@ -70,6 +70,7 @@ public List<[a.type.name/]DTO> get[a.name.toUpperFirst()/](){
 public void set[a.name.toUpperFirst()/](List<[a.type.name/]DTO> [a.name/]){
 	this.[a.name/]=[a.name/];
 }
+*/
 
 [/template]
 
