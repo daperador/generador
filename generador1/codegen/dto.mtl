@@ -16,6 +16,7 @@
 [file ('/src/main/java/' + c._package.qualifiedName.replaceAll('::', '/') +'/dto/'+ c.name + 'DTO.java', false, 'UTF-8')]
 package [c._package.getQualifiedName().replaceAll('::', '.')/].dto;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 [if (c.attribute->exists(a : Property | a.isMany()))]
 import java.util.List;
 import java.util.ArrayList;
@@ -29,7 +30,19 @@ import java.util.Date;
 /**
 * @generated
 */
+@JsonIgnoreProperties(ignoreUnknown = true)
 [c.classHeader()/] {
+
+	private Long id;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+	
     [c.attribute.generate()/]
     [c.getAssociations().navigableOwnedEnd->select(type <> c).generate()/]
     [c.attribute.accessors()/]

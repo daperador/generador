@@ -53,8 +53,6 @@
                         <a class="navbar-brand" href="#">Logotipo</a>
                     </div>
 
-                    <!-- Agrupar los enlaces de navegación, los formularios y cualquier
-                         otro elemento que se pueda ocultar al minimizar la barra -->
                     <div class="collapse navbar-collapse navbar-ex1-collapse">
                         <ul class="nav navbar-nav">
                             <li class="dropdown">
@@ -68,21 +66,12 @@
                         </ul>
                     </div>
                 </nav>
-
-
             </div>
             <div class="content-body">
                 <iframe id="iframeContenido"></iframe>
             </div>
             <div class="content-footer"></div>
         </div>
-
-        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0-rc.1/angular.min.js"></script>
-        <script src="https://code.angularjs.org/1.5.0-rc.1/angular-route.js"></script>
-
-        <script src="./js/EstudianteApp.js"></script>
-        <script src="./js/EstudianteController.js"></script>
-
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
     </body>
 </html>
@@ -92,4 +81,5 @@
 
 [template public generate(c : Class)]
 <li><a onclick="accionMenu('[c.name/].html#/')">[c.name/]</a></li>
+
 [/template]

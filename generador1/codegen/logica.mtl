@@ -110,6 +110,7 @@ public void borrar(Long id){
 private [c.name/] convertirDTO([c.name/]DTO dto){
 	if(dto==null)return null;
 	[c.name/] entidad=new [c.name/]();
+	entidad.setId(dto.getId());
 	[c.attribute.converterDTOAttribute()/]
 	return entidad;
 }
@@ -131,6 +132,7 @@ private [c.name/] convertirDTO([c.name/]DTO dto){
 */
 private [c.name/]DTO convertirEntidad([c.name/] entidad){
 	[c.name/]DTO dto=new [c.name/]DTO();
+	dto.setId(entidad.getId());
 	[c.attribute.converterEntityAttribute()/]
 	return dto;
 }
