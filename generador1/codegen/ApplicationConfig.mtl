@@ -25,13 +25,14 @@ public class ApplicationConfig extends Application {
     }
     
     private void addRestResourceClasses(Set<Class<?>> resources) {
-        resources.add(EstudianteServicio.class);
-		resources.add(CursoServicio.class);
-		resources.add(SeccionServicio.class);
-        
+        [p.packagedElement->filter(Class).generate()/]
     }
     
 }
 
 [/file]
+[/template]
+
+[template public generate(c : Class)]
+resources.add([c.name/]Servicio.class);
 [/template]

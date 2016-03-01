@@ -70,7 +70,12 @@ module.controller('[c.name/]Ctrl', ['['/]'$scope', '$filter', '$http', function 
     };
 	//eliminar
 	$scope.eliminar = function (data){
-	
+		$http.delete('./webresources/[c.name/]/'+data.id, {})
+		    .success(function (data, status, headers, config) {
+		        $scope.listar();
+		    }).error(function (data, status, headers, config) {
+		        alert('Error al eliminar la informaci\xf3n del Estudiante, por favor intente mas tarde');
+	    });   
 	};
 }]);
 [/file]
