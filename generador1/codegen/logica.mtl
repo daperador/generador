@@ -41,7 +41,7 @@ import javax.ejb.Stateless;
 [/template]
 
 [template public extendsHeader(c : Class) ? (c.superClass->notEmpty())]
- extends [c.superClass.name/]
+ extends [c.superClass.name/]Logica
 [/template]
 
 [template public implementsHeader(c : Class) ? (c.interfaceRealization->notEmpty())]

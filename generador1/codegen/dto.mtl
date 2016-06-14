@@ -162,7 +162,7 @@ public void set[a.name.toUpperFirst()/](List<[a.type.name/]DTO> [a.name/]){
 [/template]
 
 [template public extendsHeader(c : Class) ? (c.superClass->notEmpty())]
- extends [c.superClass.name/]
+ extends [c.superClass.name/]DTO
 [/template]
 
 [template public implementsHeader(c : Class) ? (c.interfaceRealization->notEmpty())]
