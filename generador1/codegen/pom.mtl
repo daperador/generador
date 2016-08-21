@@ -8,8 +8,8 @@
     <modelVersion>4.0.0</modelVersion>
 
 [if(p.name.replaceAll('::', '.').lastIndex('.')>0)]
-	<groupId>[p.name.replaceAll('::', '.').substring(0,p.name.replaceAll('::', '.').lastIndex('.'))/]</groupId>
-    <artifactId>[p.name.replaceAll('::', '.').substring(p.name.replaceAll('::', '.').lastIndex('.'))/]</artifactId>
+	<groupId>[p.name.replaceAll('::', '.').substring(1,p.name.replaceAll('::', '.').lastIndex('.'))/]</groupId>
+    <artifactId>[p.name.replaceAll('::', '.').substring(p.name.replaceAll('::', '.').lastIndex('.')+1)/]</artifactId>
 [else]
 	    <groupId>[p.name/]</groupId>
     <artifactId>[p.name/]</artifactId>
@@ -17,7 +17,7 @@
 	<version>1.0</version>
     <packaging>war</packaging>
 [if(p.name.replaceAll('::', '.').lastIndex('.')>0)]
-    <name>[p.name.replaceAll('::', '.').substring(p.name.lastIndex('.'))/]</name>
+    <name>[p.name.replaceAll('::', '.').substring(p.name.replaceAll('::', '.').lastIndex('.')+1)/]</name>
 [else]
     <name>[p.name/]</name>
 [/if]
