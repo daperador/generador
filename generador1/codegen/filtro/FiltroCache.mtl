@@ -1,4 +1,4 @@
-[module filtroCache('http://www.eclipse.org/uml2/4.0.0/UML')/]
+[module FiltroCache('http://www.eclipse.org/uml2/4.0.0/UML')/]
 
 [template public generate(p : Package)]
 [comment @main/]
