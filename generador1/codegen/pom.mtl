@@ -7,12 +7,20 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>[p.qualifiedName.replaceAll('::', '.')/]</groupId>
+[if(p.name.replaceAll('::', '.').lastIndex('.')>0)]
+	<groupId>[p.name.replaceAll('::', '.').substring(0,p.name.replaceAll('::', '.').lastIndex('.'))/]</groupId>
+    <artifactId>[p.name.replaceAll('::', '.').substring(p.name.replaceAll('::', '.').lastIndex('.'))/]</artifactId>
+[else]
+	    <groupId>[p.name/]</groupId>
     <artifactId>[p.name/]</artifactId>
-    <version>1.0</version>
+[/if]
+	<version>1.0</version>
     <packaging>war</packaging>
-
+[if(p.name.replaceAll('::', '.').lastIndex('.')>0)]
+    <name>[p.name.replaceAll('::', '.').substring(p.name.lastIndex('.'))/]</name>
+[else]
     <name>[p.name/]</name>
+[/if]
 
     <properties>
         <endorsed.dir>${project.build.directory}/endorsed</endorsed.dir>

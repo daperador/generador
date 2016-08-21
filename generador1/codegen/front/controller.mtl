@@ -18,9 +18,12 @@ module.controller('[c.name/]Ctrl', ['['/]'$scope', '$filter', '$http', function 
 		    .success(function (data, status, headers, config) {
 		        $scope.lista = data;
 		    }).error(function (data, status, headers, config) {
-		        alert('Error al consultar la informaci\xf3n de la aseguradora, por favor intente más tarde');
+		        alert('Error al consultar la informaci\xf3n, por favor intente más tarde');
 	    });    
 	};
+
+	[c.getAssociations().navigableOwnedEnd->select(type <> c).listarRelacion() /]
+
 	$scope.listar();
 	//guardar
 	$scope.nuevo = function () {
@@ -79,4 +82,17 @@ module.controller('[c.name/]Ctrl', ['['/]'$scope', '$filter', '$http', function 
 	};
 }]);
 [/file]
+[/template]
+
+[template public listarRelacion(a : Property)]
+	$scope.listar[a.name.toUpperFirst()/]=function(){
+		$http.get('./webresources/[a.type.name/]', {})
+		    .success(function (data, status, headers, config) {
+		        $scope.lista[a.name.toUpperFirst()/] = data;
+		    }).error(function (data, status, headers, config) {
+		        alert('Error al consultar la informaci\xf3n, por favor intente más tarde');
+	    });    
+	};
+	$scope.listar[a.name.toUpperFirst()/]();
+	
 [/template]

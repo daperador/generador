@@ -55,6 +55,8 @@ import java.util.Date;
 
 [template public generate(a : Property) ? (a.isMany())]
 
+
+
 /**
 * @generated
 */
@@ -76,93 +78,45 @@ public void set[a.name.toUpperFirst()/](List<[a.type.name/]DTO> [a.name/]){
 
 [comment Single properties /]
 
-[template public generate(a : Property)]
+[template public generate(a : Property) ? (not a.isMany())]
 
 /**
 * @generated
 */
-[if(a.isAttribute())]private [a.type.name/] [a.name/];
-[else]private [a.type.name/]DTO [a.name/];[/if]
-
-[/template]
-
-[comment Accessors for Collection /]
-
-
-[template public accessors(a : Property) ? (a.isMany() and a.isOrdered)]
-
-/**
-* @generated
-*/
-[a.visibility/] List<[a.type.name/]> get[a.name.toUpperFirst()/]() {
-    if (this.[a.name/] == null) {
-        this.[a.name/] = new ArrayList<[a.type.name/]>();
-    }
-    return this.[a.name/];
-}
-
-/**
-* @generated
-*/
-[a.visibility/] void set[a.name.toUpperFirst()/]([a.type.name/] [a.name/]) {
-    this.[a.name/] = [a.name/];
-}
+private [a.tipoDTO()/] [a.name/];
 
 [/template]
 
 [comment Accessors for single element /]
 
-[template public accessors(a : Property)]
-[if(a.isAttribute())]
+[template public accessors(a : Property) ? (not a.isMany())]
 /**
 * @generated
 */
-[a.visibility/] [a.type.name/] get[a.name.toUpperFirst()/]() {
+public [a.tipoDTO()/] get[a.name.toUpperFirst()/]() {
     return this.[a.name/];
 }
 
 /**
 * @generated
 */
-[a.visibility/] void set[a.name.toUpperFirst()/]([a.type.name/] [a.name/]) {
+public void set[a.name.toUpperFirst()/]([a.tipoDTO()/] [a.name/]) {
     this.[a.name/] = [a.name/];
-}
-[else]
-/**
-* @generated
-*/
-[a.visibility/] [a.type.name/]DTO get[a.name.toUpperFirst()/]() {
-    return this.[a.name/];
-}
-
-/**
-* @generated
-*/
-[a.visibility/] void set[a.name.toUpperFirst()/]([a.type.name/]DTO [a.name/]) {
-    this.[a.name/] = [a.name/];
-}
-[/if]
-[/template]
-
-
-[comment Operations /]
-
-[template public generate(o : Operation)]
-/**
-* @generated
-*/
-[o.visibility/] [o.name/]() {
-    //TODO
 }
 
 [/template]
+
+[template public tipoDTO(a:Property)]
+[if(a.isAttribute())][if(a.type.name='Date')]String[else][a.type.name/][/if][else]BaseDTO[/if]
+[/template]
+
 
 [template public classHeader(c : Class)]
 [c.visibility/] class [c.name/]DTO[c.extendsHeader()/][c.implementsHeader()/]
 [/template]
 
 [template public extendsHeader(c : Class) ? (c.superClass->notEmpty())]
- extends [c.superClass.name/]
+ extends [c.superClass.name/]DTO
 [/template]
 
 [template public implementsHeader(c : Class) ? (c.interfaceRealization->notEmpty())]
