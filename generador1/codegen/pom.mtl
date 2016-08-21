@@ -7,9 +7,8 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-<prueba>[p.name.replaceAll('::', '.')/]</prueba>
 [if(p.name.replaceAll('::', '.').lastIndex('.')>0)]
-    <groupId>[p.name.replaceAll('::', '.').substring(1,p.name.replaceAll('::', '.').lastIndex('.'))/]</groupId>
+    <groupId>[p.name.replaceAll('::', '.').substring(1,p.name.replaceAll('::', '.').lastIndex('.')-1)/]</groupId>
     <artifactId>[p.name.replaceAll('::', '.').substring(p.name.replaceAll('::', '.').lastIndex('.')+1)/]</artifactId>
 [else]
     <groupId>[p.name/]</groupId>

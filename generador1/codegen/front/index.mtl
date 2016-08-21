@@ -7,7 +7,7 @@
 <html>
     <head>
 [if (p.name.replaceAll('::', '.').lastIndex('.')>0)]
-	<title>Aplicaci&oacute;n [p.name.replaceAll('::', '.').substring(p.name.replaceAll('::', '.').lastIndex('.')).toUpperFirst()/]</title>
+	<title>Aplicaci&oacute;n [p.name.replaceAll('::', '.').substring(p.name.replaceAll('::', '.').lastIndex('.')+1).toUpperFirst()/]</title>
 [else]
 	<title>Aplicaci&oacute;n [p.name.toUpperFirst()/]</title>        
 [/if]
