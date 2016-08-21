@@ -15,35 +15,11 @@
         <meta name="viewport" content="width=device-width">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+        <link href="./css/main.css" rel="stylesheet">
 
         <script src="http://code.jquery.com/jquery-2.2.0.min.js"></script>
-        <style>
-            #iframeContenido{
-                margin-left: auto;
-                margin-right: auto;
-                display:block;
-                border:0px;
-            }
-        </style>
-        <script>
-            $(document).ready(function () {
-                calcularIframe();
-            });
-            $(window).resize(function() {
-                calcularIframe();
-            });
+        <script src="./js/lib/utils.js"></script>
 
-            function calcularIframe(){
-                var width=$(window).width()-10;
-                var height=$(window).height()-$('.content-header').height()-$('.content-footer').height()-25;
-                $('#iframeContenido').width(width);
-                $('#iframeContenido').height(height);
-            }
-            
-            function accionMenu(url){
-                $('#iframeContenido').attr('src',url);
-            }
-        </script>
     </head>
     <body>
         <div class="content">

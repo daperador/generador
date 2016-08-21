@@ -25,7 +25,6 @@ import javax.ws.rs.core.*;
 	[c.getID()/]
 	[c.insert()/]
 	[c.delete()/]
-	[c.update()/]
 	
 }
 [/file]
@@ -78,7 +77,12 @@ public [a.name/]DTO obtener[a.name/](@PathParam("id") Long id){
 */
 @POST
 public [a.name/]DTO guardar[a.name/]([a.name/]DTO dto){
-	return logica.guardar(dto);
+    if(dto.getId()!=null){
+        logica.actualizar(dto);
+        return dto;
+    }else{
+        return logica.guardar(dto);
+    }
 }
 
 [/template]

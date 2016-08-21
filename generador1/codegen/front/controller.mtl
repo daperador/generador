@@ -9,90 +9,77 @@
 var module = angular.module('admin[c.name/].controllers', ['['/]]);
 
 module.controller('[c.name/]Ctrl', ['['/]'$scope', '$filter', '$http', function ($scope, $filter, $http) {
-	//listar
-	$scope.lista = {};
+    //listar
+    $scope.lista = {};
     $scope.datosFormulario = {};
-	$scope.panelEditar = false;
-	$scope.listar=function(){
-		$http.get('./webresources/[c.name/]', {})
-		    .success(function (data, status, headers, config) {
-		        $scope.lista = data;
-		    }).error(function (data, status, headers, config) {
-		        alert('Error al consultar la informaci\xf3n, por favor intente más tarde');
-	    });    
-	};
+    $scope.panelEditar = false;
+    $scope.listar=function(){
+        $http.get('./webresources/[c.name/]', {})
+            .success(function (data, status, headers, config) {
+                $scope.lista = data;
+            }).error(function (data, status, headers, config) {
+                alert('Error al consultar la informaci\xf3n, por favor intente m\xe1s tarde');
+        });    
+    };
 
-	[c.getAssociations().navigableOwnedEnd->select(type <> c).listarRelacion() /]
+    [c.getAssociations().navigableOwnedEnd->select(type <> c).listarRelacion() /]
 
-	$scope.listar();
-	//guardar
-	$scope.nuevo = function () {
+    $scope.listar();
+    //guardar
+    $scope.nuevo = function () {
         $scope.panelEditar = true;
         $scope.datosFormulario = {};
-		$scope.nuevoRegistro=true;
     };
     
     $scope.guardar = function () {
-		$scope.errores = {};
-		var error = false;
-		
+        $scope.errores = {};
+        var error = false;
+        
         if (error)
             return;
-        if ($scope.nuevoRegistro) {
-
-            $http.post('./webresources/[c.name/]', JSON.stringify($scope.datosFormulario), {}
-            ).success(function (data, status, headers, config) {
-                alert("Los datos han sido guardados con Exito");
-                $scope.panelEditar = false;
-				$scope.listar();
-            }).error(function (data, status, headers, config) {
-                alert('Error al guardar la información, por favor intente más tarde');
-            });
-        } else {
-
-            $http.put('./webresources/[c.name/]', JSON.stringify($scope.datosFormulario), {}
+        $http.post('./webresources/[c.name/]', JSON.stringify($scope.datosFormulario), {}
             ).success(function (data, status, headers, config) {
                 alert("Los datos han sido guardados con Exito");
                 $scope.panelEditar = false;
                 $scope.listar();
             }).error(function (data, status, headers, config) {
-                alert('Error al actualizar la información, por favor intente más tarde');
+                alert('Error al guardar la informaci\xf3n, por favor intente m\xe1s tarde');
             });
-        }
     };
-	$scope.cancelar = function () {
+    $scope.cancelar = function () {
         $scope.panelEditar = false;
         $scope.datosFormulario = {};
     };
 
-	//editar
-	$scope.editar = function (data) {
+    //editar
+    $scope.editar = function (data) {
         $scope.panelEditar = true;
-        $scope.nuevoRegistro = false;
         $scope.datosFormulario = data;
     };
-	//eliminar
-	$scope.eliminar = function (data){
-		$http.delete('./webresources/[c.name/]/'+data.id, {})
-		    .success(function (data, status, headers, config) {
-		        $scope.listar();
-		    }).error(function (data, status, headers, config) {
-		        alert('Error al eliminar la informaci\xf3n del Estudiante, por favor intente mas tarde');
-	    });   
-	};
+    //eliminar
+    $scope.eliminar = function (data){
+        if (confirm('¿Desea elminar este registro?')) {    
+            $http.delete('./webresources/[c.name/]/'+data.id, {})
+                .success(function (data, status, headers, config) {
+                    $scope.listar();
+                }).error(function (data, status, headers, config) {    
+                    alert('Error al eliminar la informaci\xf3n de [c.name/], por favor intente m\xe1s tarde');
+            });   
+        }
+    };
 }]);
 [/file]
 [/template]
 
 [template public listarRelacion(a : Property)]
-	$scope.listar[a.name.toUpperFirst()/]=function(){
-		$http.get('./webresources/[a.type.name/]', {})
-		    .success(function (data, status, headers, config) {
-		        $scope.lista[a.name.toUpperFirst()/] = data;
-		    }).error(function (data, status, headers, config) {
-		        alert('Error al consultar la informaci\xf3n, por favor intente más tarde');
-	    });    
-	};
-	$scope.listar[a.name.toUpperFirst()/]();
-	
+    $scope.listar[a.name.toUpperFirst()/]=function(){
+        $http.get('./webresources/[a.type.name/]', {})
+            .success(function (data, status, headers, config) {
+                $scope.lista[a.name.toUpperFirst()/] = data;
+            }).error(function (data, status, headers, config) {
+                alert('Error al consultar la informaci\xf3n de [a.name/], por favor intente m\xe1s tarde');
+        });    
+    };
+    $scope.listar[a.name.toUpperFirst()/]();
+    
 [/template]
