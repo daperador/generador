@@ -2,7 +2,7 @@
 
 [template public generate(p : Package)]
 [comment @main/]
-[file ('/src/main/java/'+ p.qualifiedName.replaceAll('::', '/') +'/FiltroCache.java', false, 'UTF-8')]
+[file ('/src/main/java/'+ p.qualifiedName.replaceAll('::', '/') +'/filtros/FiltroCache.java', false, 'UTF-8')]
 package co.com.consycom.contravencional.filtros;
 
 import java.io.IOException;
@@ -29,6 +29,11 @@ public class FiltroCache implements Filter {
     
     public FiltroCache() {
     }    
+
+    @Override
+    public void init(FilterConfig filterConfig) throws ServletException {
+        //no realiza ninguna accion
+    }
     
     /**
      *
@@ -58,6 +63,11 @@ public class FiltroCache implements Filter {
         ((HttpServletResponse)response).addHeader("pragma", "no-cache");
         
         chain.doFilter(request, response);
+    }
+
+    @Override
+    public void destroy() {
+        //no realiza ninguna accion
     }
 }
 [/file]

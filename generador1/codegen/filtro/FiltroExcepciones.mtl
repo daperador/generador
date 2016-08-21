@@ -2,7 +2,7 @@
 
 [template public generate(p : Package)]
 [comment @main/]
-[file ('/src/main/java/'+ p.qualifiedName.replaceAll('::', '/') +'/FiltroExcepciones.java', false, 'UTF-8')]
+[file ('/src/main/java/'+ p.qualifiedName.replaceAll('::', '/') +'/filtros/FiltroExcepciones.java', false, 'UTF-8')]
 package [p.qualifiedName.replaceAll('::', '.')/].filtros;
 
 import java.io.BufferedOutputStream;
