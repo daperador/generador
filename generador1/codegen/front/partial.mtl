@@ -6,7 +6,6 @@
 <div class="btn-group">
 	<button type="button" class="btn btn-default" ng-click="nuevo()">Nuevo [c.name/]</button>
 	<button type="button" class="btn btn-default" ng-click="cancelar()">Listar [c.name/]</button>
-	<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" ng-click="">Reporte [c.name/]</button>
 </div>
 				
 <div class="panel panel-primary" ng-hide="panelEditar">
