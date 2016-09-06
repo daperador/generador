@@ -33,6 +33,14 @@ import java.util.Date;
 @JsonIgnoreProperties(ignoreUnknown = true)
 [c.classHeader()/] {
 
+    public [c.name/]DTO(){
+        //constructor base
+    }
+    
+    public [c.name/]DTO(Long id){
+        this.id=id;
+    }
+
 	private Long id;
 
     public Long getId() {
@@ -107,7 +115,7 @@ public void set[a.name.toUpperFirst()/]([a.tipoDTO()/] [a.name/]) {
 [/template]
 
 [template public tipoDTO(a:Property)]
-[if(a.isAttribute())][if(a.type.name='Date')]String[else][a.type.name/][/if][else]BaseDTO[/if]
+[if(a.isAttribute())][if(a.type.name='Date')]String[else][a.type.name/][/if][else][a.type.name/]DTO[/if]
 [/template]
 
 
