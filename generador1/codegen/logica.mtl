@@ -176,11 +176,13 @@ private [c.name/]DTO convertirEntidad([c.name/] entidad){
 		dto.set[a.name.toUpperFirst()/](
 			new [a.type.name/]DTO(
 				entidad.get[a.name.toUpperFirst()/]().getId()));
-        [if(a.class.attribute->exists(at : Property | at.name.equalsIgnoreCase('nombre')))]
         dto.get[a.name.toUpperFirst()/]().setNombre(entidad.get[a.name.toUpperFirst()/]().getNombre());
-        [/if]
-	}
+    }
 [/if]
+[/template]
+
+[template public getNombre(c : Class)]
+
 [/template]
 
 [template public converterDTO2EntityList(c : Class)]
