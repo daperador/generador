@@ -2,7 +2,7 @@
 [module generate('http://www.eclipse.org/uml2/5.0.0/UML')]
 
 
-[template public generateElement(p : Package)]
+[template public generate(p : Package)]
 [comment @main/]
 [file ('/documento.html', false, 'UTF-8')]
 <html>
