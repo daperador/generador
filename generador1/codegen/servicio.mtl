@@ -31,6 +31,10 @@ import javax.ws.rs.core.*;
 [/file]
 [/template]
 
+[template public documentacionAnn(e: ecore::EAnnotation)]
+[e.details.documentacion()/]
+[/template]
+
 [template public documentacion(d: ecore::EStringToStringMapEntry)]
 [d.key/]-[d.value/]
 [/template]
