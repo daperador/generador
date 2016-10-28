@@ -32,7 +32,7 @@ import javax.ws.rs.core.*;
 [/template]
 
 [template public documentacion(d: ecore::EStringToStringMapEntry)]
-[d.value/]
+[d.key/]-[d.value/]
 [/template]
 
 [template public classHeader(c : Class)]
