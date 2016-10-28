@@ -15,6 +15,7 @@ import javax.ws.rs.*;
 import javax.ws.rs.core.*;
 
 /**
+  * [c.eAnnotations.details.value/]
   *  @generated
   */
 [c.classHeader()/] {
@@ -49,6 +50,8 @@ import javax.ws.rs.core.*;
 [template public getAll(a : Class)]
 
 /**
+* retorna una lista con los [a.name/] que se encuentran en la base de datos
+* @return retorna una lista de [a.name/]DTO
 * @generated
 */
 @GET
@@ -60,6 +63,8 @@ public List<[a.name/]DTO> obtenerTodos[a.name/]s(){
 [template public getID(a : Class)]
 
 /**
+* @param id identificador del elemento [a.name/]
+* @return [a.name/] del id dado
 * @generated
 */
 @GET
@@ -73,8 +78,11 @@ public [a.name/]DTO obtener[a.name/](@PathParam("id") Long id){
 [template public insert(a : Class)]
 
 /**
-* @generated
-*/
+ * almacena la informacion de [a.name/]
+ * @param dto [a.name/] a guardar
+ * @return [a.name/] con los cambios realizados por el proceso de guardar
+ * @generated
+ */
 @POST
 public [a.name/]DTO guardar[a.name/]([a.name/]DTO dto){
     if(dto.getId()!=null){
@@ -89,21 +97,15 @@ public [a.name/]DTO guardar[a.name/]([a.name/]DTO dto){
 
 [template public update(a : Class)]
 
-/**
-* @generated
-*/
-@PUT
-public void actualizar[a.name/]([a.name/]DTO dto){
-	logica.actualizar(dto);
-}
-
 [/template]
 
 [template public delete(a : Class)]
 
 /**
-* @generated
-*/
+ * elimina el registro [a.name/] con el identificador dado
+ * @param id identificador del [a.name/]
+ * @generated 
+ */
 @DELETE
 @Path("/{id}")
 public void borrar[a.name/](@PathParam("id") Long id){

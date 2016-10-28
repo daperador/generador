@@ -115,7 +115,7 @@ public void borrar(Long id){
 /**
 * @generated
 */
-private [c.name/] convertirDTO([c.name/]DTO dto){
+public [c.name/] convertirDTO([c.name/]DTO dto){
 	if(dto==null)return null;
 	[c.name/] entidad=new [c.name/]();
 	entidad.setId(dto.getId());
@@ -152,7 +152,7 @@ private [c.name/] convertirDTO([c.name/]DTO dto){
 /**
 * @generated
 */
-private [c.name/]DTO convertirEntidad([c.name/] entidad){
+public [c.name/]DTO convertirEntidad([c.name/] entidad){
 	[c.name/]DTO dto=new [c.name/]DTO();
 	dto.setId(entidad.getId());
 	[c.attribute.converterEntityAttribute()/]
@@ -190,7 +190,7 @@ private [c.name/]DTO convertirEntidad([c.name/] entidad){
 /**
 * @generated
 */
-private List<[c.name/]> convertirDTO(List<[c.name/]DTO> dtos){
+public List<[c.name/]> convertirDTO(List<[c.name/]DTO> dtos){
 	List<[c.name/]> entidades=new ArrayList<[c.name/]>();
 	for([c.name/]DTO dto:dtos){
 		entidades.add(convertirDTO(dto));
@@ -205,7 +205,7 @@ private List<[c.name/]> convertirDTO(List<[c.name/]DTO> dtos){
 /**
 * @generated
 */
-private List<[c.name/]DTO> convertirEntidad(List<[c.name/]> entidades){
+public List<[c.name/]DTO> convertirEntidad(List<[c.name/]> entidades){
 	List<[c.name/]DTO> dtos=new ArrayList<[c.name/]DTO>();
 	for([c.name/] entidad:entidades){
 		dtos.add(convertirEntidad(entidad));
