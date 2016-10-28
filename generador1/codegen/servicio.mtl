@@ -15,7 +15,7 @@ import javax.ws.rs.*;
 import javax.ws.rs.core.*;
 
 /**
-  * [c.eAnnotations.details.value/]
+  * [c.eAnnotations.details->select(d|d.key='gmm-documentation').value/]
   *  @generated
   */
 [c.classHeader()/] {
