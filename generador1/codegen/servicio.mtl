@@ -1,4 +1,4 @@
-[module servicio('http://www.eclipse.org/uml2/4.0.0/UML')/]
+[module servicio('http://www.eclipse.org/uml2/4.0.0/UML', 'http://www.eclipse.org/emf/2002/Ecore')/]
 
 [template public generate(c : Class)]
 [comment @main/]
@@ -15,7 +15,7 @@ import javax.ws.rs.*;
 import javax.ws.rs.core.*;
 
 /**
-  * [c.eAnnotations.details->select(d|d.key='gmm-documentation').value/]
+  * [c.eAnnotations.details->select(d|d.key='gmm-documentation').documentacion()/]
   *  @generated
   */
 [c.classHeader()/] {
@@ -29,6 +29,10 @@ import javax.ws.rs.core.*;
 	
 }
 [/file]
+[/template]
+
+[template public documentacion(d: ecore::EStringToStringMapEntry)]
+[d.value/]
 [/template]
 
 [template public classHeader(c : Class)]
