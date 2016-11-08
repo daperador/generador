@@ -74,7 +74,7 @@
 
 [template public fieldDef(a : Property)]
 				<div class="row">
-                    <div class="form-group col-md-6" ng-class="errores.idAseg?'error':''">
+                    <div class="form-group col-md-6" ng-class="errores.[a.name/]?'error':''">
                         <label for="[a.name/]">[a.name/]</label>
 [if(a.type.name.equalsIgnoreCase('Date'))] 
 						<div class="input-group">
