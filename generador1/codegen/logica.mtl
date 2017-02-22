@@ -59,6 +59,8 @@ import java.text.SimpleDateFormat;
 [template public getAll(a : Class)]
 
 /**
+* retorna una lista con los [a.name/] que se encuentran en la base de datos
+* @return retorna una lista de [a.name/]DTO
 * @generated
 */
 public List<[a.name/]DTO> obtenerTodos(){
@@ -69,6 +71,8 @@ public List<[a.name/]DTO> obtenerTodos(){
 [template public getID(a : Class)]
 
 /**
+* @param id identificador del elemento [a.name/]
+* @return [a.name/] del id dado
 * @generated
 */
 public [a.name/]DTO obtener(Long id){
@@ -80,8 +84,11 @@ public [a.name/]DTO obtener(Long id){
 [template public insert(a : Class)]
 
 /**
-* @generated
-*/
+ * almacena la informacion de [a.name/]
+ * @param dto [a.name/] a guardar
+ * @return [a.name/] con los cambios realizados por el proceso de guardar
+ * @generated
+ */
 public [a.name/]DTO guardar([a.name/]DTO dto){
 	return convertirEntidad(persistencia.guardar(convertirDTO(dto)));
 }
@@ -91,8 +98,11 @@ public [a.name/]DTO guardar([a.name/]DTO dto){
 [template public update(a : Class)]
 
 /**
-* @generated
-*/
+ * actualiza la informacion de [a.name/]
+ * @param dto [a.name/] a guardar
+ * @return [a.name/] con los cambios realizados por el proceso de guardar
+ * @generated
+ */
 public void actualizar([a.name/]DTO dto){
 	persistencia.actualizar(convertirDTO(dto));
 }
@@ -102,8 +112,10 @@ public void actualizar([a.name/]DTO dto){
 [template public delete(a : Class)]
 
 /**
-* @generated
-*/
+ * Elimina el registro [a.name/] con el identificador dado
+ * @param id identificador del [a.name/]
+ * @generated 
+ */
 public void borrar(Long id){
 	persistencia.borrar(id);
 }
