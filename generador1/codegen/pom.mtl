@@ -19,7 +19,7 @@
 [if(p.name.replaceAll('::', '.').lastIndex('.')>0)]
     <name>[p.name.replaceAll('::', '.').substring(p.name.replaceAll('::', '.').lastIndex('.')+1)/]</name>
 [else]
-    <name>[p.name/][prueba()/]</name>
+    <name>[p.name/]</name>
 [/if]
 
     <properties>
@@ -104,5 +104,3 @@
 </project>
 [/file]
 [/template]
-
-[query public prueba():String = invoke('co.com.generador1.Prueba','prueba()', Sequence{})/]
