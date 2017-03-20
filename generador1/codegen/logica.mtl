@@ -188,7 +188,7 @@ public [c.name/]DTO convertirEntidad([c.name/] entidad){
 		dto.set[a.name.toUpperFirst()/](
 			new [a.type.name/]DTO(
 				entidad.get[a.name.toUpperFirst()/]().getId()));
-[a.type.getProperty('Nombre')/]
+[a.type.getProperty('nombre')/]
 [/if]
 [/template]
 
