@@ -1,14 +1,3 @@
-[comment]
-/*******************************************************************************
- * 
- * This is a MTL generator template
- * See: 
- * Language Reference: http://help.eclipse.org/juno/topic/org.eclipse.acceleo.doc/pages/reference/language.html?cp=5_3_0
- * Operations: http://help.eclipse.org/juno/topic/org.eclipse.acceleo.doc/pages/reference/operations.html?cp=5_3_2
- * Text production rules: http://help.eclipse.org/juno/topic/org.eclipse.acceleo.doc/pages/reference/textproductionrules.html?cp=5_3_5
- *
- *******************************************************************************
-[/comment]
 [module dto('http://www.eclipse.org/uml2/4.0.0/UML')/]
 
 [template public generate(c : Class)]
@@ -28,8 +17,9 @@ import java.util.Date;
 [/if]
 
 /**
-* @generated
-*/
+  * @generated
+  *  @author [c._package.eAnnotations.details->select(a: ecore::EStringToStringMapEntry|a.key='author').value/]
+  */
 @JsonIgnoreProperties(ignoreUnknown = true)
 [c.classHeader()/] {
 

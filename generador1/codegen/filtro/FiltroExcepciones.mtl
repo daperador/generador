@@ -22,6 +22,7 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Este filtro procesa las excepciones que se arrojan hacia arriba y generan un mecanismo estandar de salida de la excepci&oacute;n
  * @generated
+ * @author [p.eAnnotations.details->select(a: ecore::EStringToStringMapEntry|a.key='author').value/]
  */
 @WebFilter(filterName = "FiltroExcepciones", urlPatterns = {"/webresources/*"})
 public class FiltroExcepciones implements Filter {

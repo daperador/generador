@@ -17,6 +17,7 @@ import javax.persistence.*;
 
 /**
   *  @generated
+  *  @author [c._package.eAnnotations.details->select(a: ecore::EStringToStringMapEntry|a.key='author').value/]
   */
 [c.classHeader()/] {
 

@@ -35,6 +35,9 @@ import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+/**
+  *  @author [p.eAnnotations.details->select(a: ecore::EStringToStringMapEntry|a.key='author').value/]
+  */
 @Provider
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)

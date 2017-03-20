@@ -23,6 +23,7 @@ import javax.servlet.http.HttpServletResponse;
  * Esta clase fuerza a que todos los recursos que se utilizan en la aplicacion no tengan cache y siempre se carguen
  * esto no incluye archivos txt, pdf y csv
  * @generated
+ * @author [p.eAnnotations.details->select(a: ecore::EStringToStringMapEntry|a.key='author').value/]
  */
 @WebFilter(filterName = "FiltroCache", urlPatterns = {"*.html","/partials/*", "/js/*", "/webresources/*"})
 public class FiltroCache implements Filter {
