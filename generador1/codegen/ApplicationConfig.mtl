@@ -12,7 +12,7 @@ import [p.qualifiedName.replaceAll('::', '.')/].servicio.*;
 
 /**
  * Esta clase registra la informacion de las clases que van a ser utilizadas como servicios REST
- * @author [p.eAnnotations.details->filter(a: ecore::EStringToStringMapEntry|a.key='author').value/]
+ * @author [p.eAnnotations.details->select(a: ecore::EStringToStringMapEntry|a.key='author').value/]
  */
 @javax.ws.rs.ApplicationPath("webresources")
 public class ApplicationConfig extends Application {
