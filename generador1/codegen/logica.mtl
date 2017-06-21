@@ -115,7 +115,6 @@ public [a.name/]DTO guardar([a.name/]DTO dto){
 /**
  * Actualiza la informacion de [a.name/]
  * @param dto [a.name/] a guardar
- * @return [a.name/] con los cambios realizados por el proceso de guardar
  * @generated
  */
 public void actualizar([a.name/]DTO dto){
