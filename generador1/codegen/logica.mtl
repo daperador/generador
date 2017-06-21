@@ -21,14 +21,6 @@ import java.text.SimpleDateFormat;
 import java.time.*;
 import java.time.format.DateTimeFormatter;
 [/if]
-[if (c.attribute->exists(a : Property | a.type.name.equalsIgnoreCase('LocalDateTime')))]
-import java.time.*;
-import java.time.format.DateTimeFormatter;
-[/if]
-[if (c.attribute->exists(a : Property | a.type.name.equalsIgnoreCase('LocalTime')))]
-import java.time.*;
-import java.time.format.DateTimeFormatter;
-[/if]
 
 /**
   *  @generated
@@ -42,13 +34,13 @@ import java.time.format.DateTimeFormatter;
 	private final SimpleDateFormat fecha = new SimpleDateFormat("dd/MM/yyyy");
 [/if]
 [if (c.attribute->exists(a : Property | a.type.name.equalsIgnoreCase('LocalDate')))]
-	private final DateTimeFormatter formatoFecha = new DateTimeFormatter.ofPattern("dd/MM/yyyy");
+	private final DateTimeFormatter formatoFecha = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 [/if]
 [if (c.attribute->exists(a : Property | a.type.name.equalsIgnoreCase('LocalDateTime')))]
-	private final DateTimeFormatter formatoFechaHora = new DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
+	private final DateTimeFormatter formatoFechaHora = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
 [/if]
 [if (c.attribute->exists(a : Property | a.type.name.equalsIgnoreCase('LocalTime')))]
-	private final DateTimeFormatter formatoHora = new DateTimeFormatter.ofPattern("HH:mm");
+	private final DateTimeFormatter formatoHora = DateTimeFormatter.ofPattern("HH:mm");
 [/if]
 
 	[c.getAll()/]

@@ -24,6 +24,9 @@ import javax.persistence.*;
   */
 [c.classHeader()/] {
 
+	/**
+	* Identificador de la tabla [c.name/]. 	
+	**/
 	@Id
     //@Column(name = "[c.name/]_id")
     @GeneratedValue(generator = "[c.name/]Gen", strategy = GenerationType.SEQUENCE)
