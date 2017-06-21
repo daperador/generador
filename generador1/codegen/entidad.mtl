@@ -13,6 +13,15 @@ import java.util.ArrayList;
 [if (c.attribute->exists(a : Property | a.type.name.equalsIgnoreCase('Date')))]
 import java.util.Date;
 [/if]
+[if (c.attribute->exists(a : Property | a.type.name.equalsIgnoreCase('LocalDate')))]
+import java.time.*;
+[/if]
+[if (c.attribute->exists(a : Property | a.type.name.equalsIgnoreCase('LocalDateTime')))]
+import java.time.*;
+[/if]
+[if (c.attribute->exists(a : Property | a.type.name.equalsIgnoreCase('LocalTime')))]
+import java.time.*;
+[/if]
 import javax.persistence.*;
 
 /**
