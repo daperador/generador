@@ -73,7 +73,7 @@ import java.time.format.DateTimeFormatter;
 [template public getAll(a : Class)]
 
 /**
-* retorna una lista con los [a.name/] que se encuentran en la base de datos
+* Retorna una lista con los [a.name/] que se encuentran en la base de datos
 * @return retorna una lista de [a.name/]DTO
 * @generated
 */
@@ -85,6 +85,7 @@ public List<[a.name/]DTO> obtenerTodos(){
 [template public getID(a : Class)]
 
 /**
+* Obtiene [a.name/] dado su identificador. 	
 * @param id identificador del elemento [a.name/]
 * @return [a.name/] del id dado
 * @generated
@@ -98,7 +99,7 @@ public [a.name/]DTO obtener(Long id){
 [template public insert(a : Class)]
 
 /**
- * almacena la informacion de [a.name/]
+ * Almacena la informacion de [a.name/]
  * @param dto [a.name/] a guardar
  * @return [a.name/] con los cambios realizados por el proceso de guardar
  * @generated
@@ -112,7 +113,7 @@ public [a.name/]DTO guardar([a.name/]DTO dto){
 [template public update(a : Class)]
 
 /**
- * actualiza la informacion de [a.name/]
+ * Actualiza la informacion de [a.name/]
  * @param dto [a.name/] a guardar
  * @return [a.name/] con los cambios realizados por el proceso de guardar
  * @generated
@@ -139,6 +140,9 @@ public void borrar(Long id){
 [template public converterDTO2Entity(c : Class)]
 
 /**
+* Convierte un DTO de tipo [c.name/]DTO en una entidad de tipo [c.name/]  
+* @param DTO a convertir
+* @return entidad
 * @generated
 */
 public [c.name/] convertirDTO([c.name/]DTO dto){
@@ -216,7 +220,7 @@ public [c.name/]DTO convertirEntidad([c.name/] entidad){
 		}
 	[elseif(a.type.name='LocalTime')]
 		if(entidad.get[a.name.toUpperFirst()/]()!=null){
-			dto.set[a.name.toUpperFirst()/](formatoHora.format(entidad.get[a.name.toUpperFirst()/]())));
+			dto.set[a.name.toUpperFirst()/](formatoHora.format(entidad.get[a.name.toUpperFirst()/]()));
 		}
 	[else]
 		dto.set[a.name.toUpperFirst()/](entidad.get[a.name.toUpperFirst()/]());
