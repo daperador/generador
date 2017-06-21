@@ -21,7 +21,14 @@ import java.text.SimpleDateFormat;
 import java.time.*;
 import java.time.format.DateTimeFormatter;
 [/if]
-
+[if (c.attribute->exists(a : Property | a.type.name.equalsIgnoreCase('LocalDateTime')))]
+import java.time.*;
+import java.time.format.DateTimeFormatter;
+[/if]
+[if (c.attribute->exists(a : Property | a.type.name.equalsIgnoreCase('LocalTime')))]
+import java.time.*;
+import java.time.format.DateTimeFormatter;
+[/if]
 
 /**
   *  @generated
@@ -33,6 +40,15 @@ import java.time.format.DateTimeFormatter;
 
 [if (c.attribute->exists(a : Property | a.type.name.equalsIgnoreCase('Date')))]
 	private final SimpleDateFormat fecha = new SimpleDateFormat("dd/MM/yyyy");
+[/if]
+[if (c.attribute->exists(a : Property | a.type.name.equalsIgnoreCase('LocalDate')))]
+	private final DateTimeFormatter formatoFecha = new DateTimeFormatter.ofPattern("dd/MM/yyyy");
+[/if]
+[if (c.attribute->exists(a : Property | a.type.name.equalsIgnoreCase('LocalDateTime')))]
+	private final DateTimeFormatter formatoFechaHora = new DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
+[/if]
+[if (c.attribute->exists(a : Property | a.type.name.equalsIgnoreCase('LocalTime')))]
+	private final DateTimeFormatter formatoHora = new DateTimeFormatter.ofPattern("HH:mm");
 [/if]
 
 	[c.getAll()/]
@@ -153,6 +169,18 @@ public [c.name/] convertirDTO([c.name/]DTO dto){
 		} catch (ParseException ex) {
             throw new RuntimeException("Error al convertir la fecha [a.name.toUpperFirst()/] " + dto.get[a.name.toUpperFirst()/]());
         }
+	}
+[elseif(a.type.name='LocalDate')]
+	if(dto.get[a.name.toUpperFirst()/]()!=null){
+		entidad.set[a.name.toUpperFirst()/](formatoFecha.format(dto.get[a.name.toUpperFirst()/]()));
+	}
+[elseif(a.type.name='LocalDateTime')]
+	if(dto.get[a.name.toUpperFirst()/]()!=null){
+		entidad.set[a.name.toUpperFirst()/](formatoFechaHora.format(dto.get[a.name.toUpperFirst()/]()));
+	}
+[elseif(a.type.name='LocalTime')]
+	if(dto.get[a.name.toUpperFirst()/]()!=null){
+		entidad.set[a.name.toUpperFirst()/](formatoHora.format(dto.get[a.name.toUpperFirst()/]()));
 	}
 [else]
 	entidad.set[a.name.toUpperFirst()/](dto.get[a.name.toUpperFirst()/]());
