@@ -22,7 +22,7 @@ import javax.persistence.*;
   *  [c.package.eAnnotations.details->select(a: ecore::EStringToStringMapEntry|a.key='gmn-documentation').value/]
   *  @author [c.package.eAnnotations.details->select(a: ecore::EStringToStringMapEntry|a.key='author').value/]
   *  @generated	  
-*/-
+*/
 [c.classHeader()/] {
 
 	/**
