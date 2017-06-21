@@ -172,15 +172,15 @@ public [c.name/] convertirDTO([c.name/]DTO dto){
 	}
 [elseif(a.type.name='LocalDate')]
 	if(dto.get[a.name.toUpperFirst()/]()!=null){
-		entidad.set[a.name.toUpperFirst()/](formatoFecha.format(dto.get[a.name.toUpperFirst()/]()));
+		entidad.set[a.name.toUpperFirst()/](LocalDate.parse(dto.get[a.name.toUpperFirst()/](), formatoFecha));
 	}
 [elseif(a.type.name='LocalDateTime')]
 	if(dto.get[a.name.toUpperFirst()/]()!=null){
-		entidad.set[a.name.toUpperFirst()/](formatoFechaHora.format(dto.get[a.name.toUpperFirst()/]()));
+		entidad.set[a.name.toUpperFirst()/](LocalDateTime.parse(dto.get[a.name.toUpperFirst()/](),formatoFechaHora));
 	}
 [elseif(a.type.name='LocalTime')]
 	if(dto.get[a.name.toUpperFirst()/]()!=null){
-		entidad.set[a.name.toUpperFirst()/](formatoHora.format(dto.get[a.name.toUpperFirst()/]()));
+		entidad.set[a.name.toUpperFirst()/](LocalTime.parse(dto.get[a.name.toUpperFirst()/](),formatoHora));
 	}
 [else]
 	entidad.set[a.name.toUpperFirst()/](dto.get[a.name.toUpperFirst()/]());
@@ -210,13 +210,25 @@ public [c.name/]DTO convertirEntidad([c.name/] entidad){
 
 [template public converterEntityAttribute(a : Property) ? (not a.isMany())]
 [if(a.isAttribute())]
-[if(a.type.name='Date')]
-	if(entidad.get[a.name.toUpperFirst()/]()!=null){
-		dto.set[a.name.toUpperFirst()/](fecha.format(entidad.get[a.name.toUpperFirst()/]()));
-	}
-[else]
-	dto.set[a.name.toUpperFirst()/](entidad.get[a.name.toUpperFirst()/]());
-[/if]
+	[if(a.type.name='Date')]
+		if(entidad.get[a.name.toUpperFirst()/]()!=null){
+			dto.set[a.name.toUpperFirst()/](fecha.format(entidad.get[a.name.toUpperFirst()/]()));
+		}
+	[elseif(a.type.name='LocalDate')]
+		if(entidad.get[a.name.toUpperFirst()/]()!=null){
+			dto.set[a.name.toUpperFirst()/](formatoFecha.format(entidad.get[a.name.toUpperFirst()/]()));
+		}
+	[elseif(a.type.name='LocalDateTime')]
+		if(entidad.get[a.name.toUpperFirst()/]()!=null){
+			dto.set[a.name.toUpperFirst()/](formatoFechaHora.format(entidad.get[a.name.toUpperFirst()/]()));
+		}
+	[elseif(a.type.name='LocalTime')]
+		if(entidad.get[a.name.toUpperFirst()/]()!=null){
+			dto.set[a.name.toUpperFirst()/](formatoHora.format(entidad.get[a.name.toUpperFirst()/]())));
+		}
+	[else]
+		dto.set[a.name.toUpperFirst()/](entidad.get[a.name.toUpperFirst()/]());
+	[/if]
 [else]
 	if(entidad.get[a.name.toUpperFirst()/]()!=null){
 		dto.set[a.name.toUpperFirst()/](
