@@ -10,7 +10,6 @@ import [c._package.qualifiedName.replaceAll('::', '.')/].persistencia.*;
 import [c._package.qualifiedName.replaceAll('::', '.')/].persistencia.entity.*;
 import java.util.List;
 import java.util.ArrayList;
-import javax.persistence.*;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
 [if (c.attribute->exists(a : Property | a.type.name.equalsIgnoreCase('Date')))]
@@ -27,6 +26,7 @@ import java.time.format.DateTimeFormatter;
   *  @author [c._package.eAnnotations.details->select(a: ecore::EStringToStringMapEntry|a.key='author').value/]
   */
 [c.classHeader()/] {
+	
 	@EJB
     private [c.name/]DAO persistencia;
 

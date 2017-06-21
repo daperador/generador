@@ -7,15 +7,15 @@ package [c._package.qualifiedName.replaceAll('::', '.')/].persistencia;
 
 import [c._package.qualifiedName.replaceAll('::', '.')/].persistencia.entity.*;
 import java.util.List;
-import java.util.ArrayList;
 import javax.persistence.*;
 import javax.ejb.Stateless;
 
 /**
-  *  @generated
-  *  @author [c._package.eAnnotations.details->select(a: ecore::EStringToStringMapEntry|a.key='author').value/]
-  */
+ *  @generated
+ *  @author [c._package.eAnnotations.details->select(a: ecore::EStringToStringMapEntry|a.key='author').value/]
+ */
 [c.classHeader()/] {
+	
 	@PersistenceContext
     private EntityManager em;
 
@@ -45,8 +45,10 @@ import javax.ejb.Stateless;
 [template public getAll(a : Class)]
 
 /**
-* @generated
-*/
+ * Retorna una lista con los [a.name/] que se encuentran en la base de datos.
+ * @return lista de [a.name/]
+ * @generated
+ */
 public List<[a.name/]> obtenerTodos(){
 	return em.createNamedQuery("[a.name/].obtenerTodos").getResultList();
 }
@@ -55,8 +57,11 @@ public List<[a.name/]> obtenerTodos(){
 [template public getID(a : Class)]
 
 /**
-* @generated
-*/
+ * Obtiene [a.name/] dado su identificador. 	
+ * @param id identificador del elemento [a.name/]
+ * @return [a.name/] del id dado
+ * @generated
+ */
 public [a.name/] obtener(Long id){
 	return em.find([a.name/].class, id);
 }
@@ -66,8 +71,11 @@ public [a.name/] obtener(Long id){
 [template public insert(a : Class)]
 
 /**
-* @generated
-*/
+ * Almacena la informacion de [a.name/]
+ * @param entidad [a.name/] a guardar
+ * @return [a.name/] con los cambios realizados por el proceso de guardar
+ * @generated
+ */
 public [a.name/] guardar([a.name/] entidad){
 	em.persist(entidad);
 	return entidad;
@@ -78,8 +86,10 @@ public [a.name/] guardar([a.name/] entidad){
 [template public update(a : Class)]
 
 /**
-* @generated
-*/
+ * Actualiza la informacion de [a.name/].
+ * @param entidad [a.name/] a actualizar
+ * @generated
+ */
 public void actualizar([a.name/] entidad){
 	em.merge(entidad);
 }
@@ -89,8 +99,10 @@ public void actualizar([a.name/] entidad){
 [template public delete(a : Class)]
 
 /**
-* @generated
-*/
+ * Elimina el registro [a.name/] con el identificador dado.
+ * @param id identificador del [a.name/]
+ * @generated 
+ */
 public void borrar(Long id){
 	em.remove(em.find([a.name/].class, id));
 }
