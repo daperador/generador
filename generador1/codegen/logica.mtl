@@ -17,6 +17,11 @@ import javax.ejb.Stateless;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 [/if]
+[if (c.attribute->exists(a : Property | (a.type.name.equalsIgnoreCase('LocalDate') or a.type.name.equalsIgnoreCase('LocalDateTime') or a.type.name.equalsIgnoreCase('LocalTime'))))]
+import java.time.*;
+import java.time.format.DateTimeFormatter;
+[/if]
+
 
 /**
   *  @generated
