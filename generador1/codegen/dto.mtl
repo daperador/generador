@@ -58,7 +58,7 @@ import java.util.Date;
 /**
 * @generated
 */
-/*private List<[a.type.name/]DTO> [a.name/];
+private List<[a.type.name/]DTO> [a.name/];
 
 public List<[a.type.name/]DTO> get[a.name.toUpperFirst()/](){
 	if(this.[a.name/]==null){
@@ -70,7 +70,6 @@ public List<[a.type.name/]DTO> get[a.name.toUpperFirst()/](){
 public void set[a.name.toUpperFirst()/](List<[a.type.name/]DTO> [a.name/]){
 	this.[a.name/]=[a.name/];
 }
-*/
 
 [/template]
 
@@ -89,6 +88,7 @@ private [a.tipoDTO()/] [a.name/];
 
 [template public accessors(a : Property) ? (not a.isMany())]
 /**
+* @return
 * @generated
 */
 public [a.tipoDTO()/] get[a.name.toUpperFirst()/]() {
@@ -96,6 +96,7 @@ public [a.tipoDTO()/] get[a.name.toUpperFirst()/]() {
 }
 
 /**
+* @param
 * @generated
 */
 public void set[a.name.toUpperFirst()/]([a.tipoDTO()/] [a.name/]) {

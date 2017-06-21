@@ -19,9 +19,10 @@ import java.time.*;
 import javax.persistence.*;
 
 /**
-  *  @generated
-  *  @author [c._package.eAnnotations.details->select(a: ecore::EStringToStringMapEntry|a.key='author').value/]
-  */
+  *  [c.package.eAnnotations.details->select(a: ecore::EStringToStringMapEntry|a.key='gmn-documentation').value/]
+  *  @author [c.package.eAnnotations.details->select(a: ecore::EStringToStringMapEntry|a.key='author').value/]
+  *  @generated	  
+*/-
 [c.classHeader()/] {
 
 	/**
@@ -56,8 +57,8 @@ import javax.persistence.*;
 * @generated
 * [a.lower/]-[a.upper/]-[a.isMany()/] 
 */
-//@OneToMany(cascade={},fetch=javax.persistence.FetchType.LAZY)
-//private List<[a.type.name/]> [a.name/];
+@OneToMany(cascade={},fetch=javax.persistence.FetchType.LAZY)
+private List<[a.type.name/]> [a.name/];
 
 [/template]
 
@@ -83,7 +84,7 @@ private [a.type.name/] [a.name/];
 [comment Accessor many elements/]
 [template public accessors(a : Property) ? (a.isMany())]
 
-/*public List<[a.type.name/]> get[a.name.toUpperFirst()/](){
+public List<[a.type.name/]> get[a.name.toUpperFirst()/](){
 	if([a.name/]!=null){
 		[a.name/]=new ArrayList<[a.type.name/]>(); 
 	}
@@ -92,7 +93,7 @@ private [a.type.name/] [a.name/];
 
 public void set[a.name.toUpperFirst()/](List<[a.type.name/]> [a.name/]){
 	this.[a.name/]=[a.name/];
-}*/
+}
 
 [/template]
 
