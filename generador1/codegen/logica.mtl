@@ -140,9 +140,9 @@ public void borrar(Long id){
 [template public converterDTO2Entity(c : Class)]
 
 /**
-* Convierte un DTO de tipo [c.name/]DTO en una entidad de tipo [c.name/]  
-* @param DTO a convertir
-* @return entidad
+* Convierte un [c.name/]DTO en la entidad [c.name/].  
+* @param dto a convertir
+* @return entidad [c.name/]
 * @generated
 */
 public [c.name/] convertirDTO([c.name/]DTO dto){
@@ -192,6 +192,9 @@ public [c.name/] convertirDTO([c.name/]DTO dto){
 [template public converterEntity2DTO(c : Class)]
 
 /**
+* Convierte [c.name/] en un DTO [c.name/]DTO.  
+* @param entidad a convertir
+* @return dto [c.name/]DTO
 * @generated
 */
 public [c.name/]DTO convertirEntidad([c.name/] entidad){
@@ -241,6 +244,9 @@ public [c.name/]DTO convertirEntidad([c.name/] entidad){
 [template public converterDTO2EntityList(c : Class)]
 
 /**
+* Convierte una lista de  [c.name/]DTO en una lista de [c.name/].  
+* @param dtos a convertir
+* @return entidades List<[c.name/]>
 * @generated
 */
 public List<[c.name/]> convertirDTO(List<[c.name/]DTO> dtos){
@@ -256,6 +262,9 @@ public List<[c.name/]> convertirDTO(List<[c.name/]DTO> dtos){
 [template public converterEntity2DTOList(c : Class)]
 
 /**
+* Convierte una lista de [c.name/] en una lista de [c.name/]DTO.  
+* @param entidades a convertir
+* @return dtos List<[c.name/]DTO>
 * @generated
 */
 public List<[c.name/]DTO> convertirEntidad(List<[c.name/]> entidades){
