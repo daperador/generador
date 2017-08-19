@@ -12,10 +12,11 @@
   <m2t name="front/app.mtl"/>
   <m2t name="front/controller.mtl"/>
   <m2t name="front/index.mtl"/>
-  <m2t name="front/crud.mtl"/>
+  <m2t name="front/menu.mtl"/>
   <m2t name="front/partial.mtl"/>
   <m2t name="front/css.mtl"/>
   <m2t name="front/utilsjs.mtl"/>
   <m2t name="filtro/FiltroCache.mtl"/>
   <m2t name="filtro/FiltroExcepciones.mtl"/>
+  <m2t name="filtro/FiltroAutenticacion.mtl"/>
 </generator>
