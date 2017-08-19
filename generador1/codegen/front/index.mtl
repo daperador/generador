@@ -7,9 +7,9 @@
 <html ng-app="admin[p.name.toUpperFirst()/]">
     <head>
 [if (p.name.replaceAll('::', '.').lastIndex('.')>0)]
-	<title>Aplicaci&oacute;n [p.name.replaceAll('::', '.').substring(p.name.replaceAll('::', '.').lastIndex('.')+1).toUpperFirst()/]</title>
+	<title>Aplicaci&oacute;n [p.name.substring(p.name.lastIndex('.')+1).toUpperFirst()/]</title>
 [else]
-	<title>Aplicaci&oacute;n [p.name.toUpperFirst()/]</title>        
+	<title>Aplicaci&oacute;n [p.name.substring(p.name.lastIndexOf('.')+1).toUpperFirst()/]</title>        
 [/if]
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width">
