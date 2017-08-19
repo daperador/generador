@@ -57,7 +57,7 @@ module.controller('[c.name/]Ctrl', ['['/]'$scope', '$filter', '$http', function 
     $scope.eliminar = function (data){
         if (confirm('\xbfDesea elminar este registro?')) {    
             $http.delete('./webresources/[c.name/]/'+data.id, {})
-                .success(function (data, status, head ers, config) {
+                .success(function (data, status, headers, config) {
                     $scope.listar();
                 }).error(function (data, status, headers, config) {    
                     alert('Error al eliminar la informaci\xf3n de [c.name/], por favor intente m\xe1s tarde');
