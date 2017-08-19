@@ -3,7 +3,6 @@
   <m2t name="dao.mtl"/>
   <m2t name="dto.mtl"/>
   <m2t name="entidad.mtl"/>
-  <!-- m2t name="gsonBodyHandler.mtl"/ -->
   <m2t name="ApplicationConfig.mtl"/>
   <m2t name="persistence.mtl"/>
   <m2t name="logica.mtl"/>
@@ -16,7 +15,4 @@
   <m2t name="front/partial.mtl"/>
   <m2t name="front/css.mtl"/>
   <m2t name="front/utilsjs.mtl"/>
-  <!--<m2t name="filtro/FiltroCache.mtl"/>
-  <m2t name="filtro/FiltroExcepciones.mtl"/>
-  <m2t name="filtro/FiltroAutenticacion.mtl"/>-->
 </generator>
