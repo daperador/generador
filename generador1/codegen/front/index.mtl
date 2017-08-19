@@ -4,7 +4,7 @@
 [comment @main/]
 [file ('/src/main/webapp/index.html', false, 'UTF-8')]
 <!DOCTYPE html>
-<html>
+<html ng-app="Admin[p.name.toUpperFirst()/]">
     <head>
 [if (p.name.replaceAll('::', '.').lastIndex('.')>0)]
 	<title>Aplicaci&oacute;n [p.name.replaceAll('::', '.').substring(p.name.replaceAll('::', '.').lastIndex('.')+1).toUpperFirst()/]</title>
@@ -17,7 +17,7 @@
         <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
         <link href="./css/main.css" rel="stylesheet">
 
-        <script src="http://code.jquery.com/jquery-2.2.0.min.js"></script>
+        <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
         <script src="./js/lib/utils.js"></script>
 
     </head>
@@ -27,8 +27,6 @@
                 <!-- imagen encabezado-->
                 <!-- menu-->
                 <nav class="navbar navbar-default" role="navigation">
-                    <!-- El logotipo y el icono que despliega el menú se agrupan
-                         para mostrarlos mejor en los dispositivos móviles -->
                     <div class="navbar-header">
                         <button type="button" class="navbar-toggle" data-toggle="collapse"
                                 data-target=".navbar-ex1-collapse">
@@ -37,13 +35,13 @@
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
                         </button>
-                        <a class="navbar-brand" href="#">Logotipo</a>
+                        <a class="navbar-brand" href="#/">Logotipo</a>
                     </div>
 
                     <div class="collapse navbar-collapse navbar-ex1-collapse">
                         <ul class="nav navbar-nav">
                             <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                <a href="#" onclick="return false;" class="dropdown-toggle" data-toggle="dropdown">
                                     Parametrizar <b class="caret"></b>
                                 </a>
                                 <ul class="dropdown-menu">
@@ -55,11 +53,18 @@
                 </nav>
             </div>
             <div class="content-body">
-                <iframe id="iframeContenido"></iframe>
+                <div ng-view=""></div>
             </div>
             <div class="content-footer"></div>
         </div>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+        <script src="https://code.angularjs.org/1.6.4/angular-route.js"></script>
+        <script src="./js/lib/dirpaginate.js"></script>
+
+        <script src="./js/RouteProvider.js"></script>
+
+		[p.packagedElement->filter(Class).importScript()/]
     </body>
 </html>
 
@@ -67,5 +72,11 @@
 [/template]
 
 [template public generate(c : Class)]
-<li><a onclick="accionMenu('[c.name/].html#/')">[c.name/]</a></li>
+<li><a href="#/[c.name/]')">[c.name/]</a></li>
+
+[/template]
+
+[template public importScript(c : Class)]
+<script src="./js/[c.name/]Controller.js"></script>
+		
 [/template]

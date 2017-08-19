@@ -5,9 +5,6 @@
 [file ('/src/main/webapp/js/'+c.name+'Controller.js', false, 'UTF-8')]
 'use strict';
 
-/* Controllers */
-var module = angular.module('admin[c.name/].controllers', ['['/]]);
-
 module.controller('[c.name/]Ctrl', ['['/]'$scope', '$filter', '$http', function ($scope, $filter, $http) {
     //listar
     $scope.lista = {};
@@ -58,9 +55,9 @@ module.controller('[c.name/]Ctrl', ['['/]'$scope', '$filter', '$http', function 
     };
     //eliminar
     $scope.eliminar = function (data){
-        if (confirm('¿Desea elminar este registro?')) {    
+        if (confirm('\xbfDesea elminar este registro?')) {    
             $http.delete('./webresources/[c.name/]/'+data.id, {})
-                .success(function (data, status, headers, config) {
+                .success(function (data, status, head ers, config) {
                     $scope.listar();
                 }).error(function (data, status, headers, config) {    
                     alert('Error al eliminar la informaci\xf3n de [c.name/], por favor intente m\xe1s tarde');
@@ -77,7 +74,8 @@ module.controller('[c.name/]Ctrl', ['['/]'$scope', '$filter', '$http', function 
             .success(function (data, status, headers, config) {
                 $scope.lista[a.name.toUpperFirst()/] = data;
             }).error(function (data, status, headers, config) {
-                alert('Error al consultar la informaci\xf3n de [a.name/], por favor intente m\xe1s tarde');
+                alert('Error al consultar la informaci\xf3n de [a.name/], por favor intente 
+m\xe1s tarde');
         });    
     };
     $scope.listar[a.name.toUpperFirst()/]();

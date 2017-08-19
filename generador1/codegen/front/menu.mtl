@@ -1,0 +1,15 @@
+[module index('http://www.eclipse.org/uml2/4.0.0/UML')/]
+
+[template public generate(p : Package)]
+[comment @main/]
+[file ('/src/main/webapp/partial/menu.html', false, 'UTF-8')]
+		[p.packagedElement->filter(Class).menu()/]
+[/file]
+[/template]
+
+[template public menu(c : Class)]
+	<div class="btn-menu" onclick="window.location.href = '#/[c.name/]'">
+        <button><span class="glyphicon glyphicon-th"></span></button>[c.name/]
+    </div>
+
+[/template]

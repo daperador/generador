@@ -43,8 +43,7 @@
             [c.attribute.fieldDef()/] 
 			[c.getAssociations().navigableOwnedEnd->select(type <> c).associationDef() /]
 			<div class="btn-group">
-				<button type="button" class="btn btn-default" ng-click="guardar()" ng-show="nuevoRegistro">Guardar</button>
-                <button type="button" class="btn btn-default" ng-click="guardar()" ng-show="!nuevoRegistro">Aceptar</button>
+				<button type="button" class="btn btn-default" ng-click="guardar()">Aceptar</button>
                 <button type="button" class="btn btn-default" ng-click="cancelar()">Cancelar</button>
             </div>
         </form>
@@ -91,7 +90,7 @@
                         </script>
 [elseif(a.type.name.equalsIgnoreCase('Boolean'))]
 						<input id="[a.name/]" 
-							   type="check"
+							   type="checkbox"
                                class="form-control" 
                                ng-model="datosFormulario.[a.name/]"/>
 [else]

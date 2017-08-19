@@ -1,19 +1,24 @@
 [module app('http://www.eclipse.org/uml2/4.0.0/UML')/]
 
-[template public generate(c : Class)]
+[template public generate(p : Package)]
 [comment @main/]
-[file ('/src/main/webapp/js/'+c.name+'App.js', false, 'UTF-8')]
+[file ('/src/main/webapp/js/RouteProvider.js', false, 'UTF-8')]
 'use strict';
 
 
 // Declare app level module which depends on filters, and services
-var module=angular.module('admin[c.name/]', ['['/]
+var module=angular.module('admin[p.name.toUpperFirst()/]', ['['/]
   'ngRoute',
-  'admin[c.name/].controllers'
+  'admin[p.name.toUpperFirst()/].controllers'
 ]);
 module.config(['['/]'$routeProvider', function($routeProvider) {
-  $routeProvider.when('/', {templateUrl: 'partials/[c.name/].html', controller: '[c.name/]Ctrl'});
-  $routeProvider.otherwise({redirectTo: '/'}); 
+	[p.packagedElement->filter(Class).generarRutas()/]
+  	$routeProvider.otherwise({redirectTo: '/'}); 
 }]);
 [/file]
+[/template]
+
+[template public generarRutas(c : Class)]
+	$routeProvider.when('/[c.name/]', {templateUrl: 'partials/[c.name/].html', controller: '[c.name/]Ctrl'});
+
 [/template]
