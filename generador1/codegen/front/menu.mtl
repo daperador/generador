@@ -2,7 +2,7 @@
 
 [template public generate(p : Package)]
 [comment @main/]
-[file ('/src/main/webapp/partial/menu.html', false, 'UTF-8')]
+[file ('/src/main/webapp/partials/menu.html', false, 'UTF-8')]
 		[p.packagedElement->filter(Class).menu()/]
 [/file]
 [/template]

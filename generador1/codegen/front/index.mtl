@@ -4,7 +4,7 @@
 [comment @main/]
 [file ('/src/main/webapp/index.html', false, 'UTF-8')]
 <!DOCTYPE html>
-<html ng-app="Admin[p.name.toUpperFirst()/]">
+<html ng-app="admin[p.name.toUpperFirst()/]">
     <head>
 [if (p.name.replaceAll('::', '.').lastIndex('.')>0)]
 	<title>Aplicaci&oacute;n [p.name.replaceAll('::', '.').substring(p.name.replaceAll('::', '.').lastIndex('.')+1).toUpperFirst()/]</title>
@@ -17,7 +17,7 @@
         <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
         <link href="./css/main.css" rel="stylesheet">
 
-        <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+        <script src="http://code.jquery.com/jquery-2.2.0.min.js"></script>
         <script src="./js/lib/utils.js"></script>
 
     </head>
@@ -56,8 +56,8 @@
             <div class="content-footer"></div>
         </div>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
-        <script src="https://code.angularjs.org/1.6.4/angular-route.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0-rc.1/angular.min.js"></script>
+        <script src="https://code.angularjs.org/1.5.0-rc.1/angular-route.js"></script>
         <script src="./js/lib/dirpaginate.js"></script>
 
         <script src="./js/RouteProvider.js"></script>
