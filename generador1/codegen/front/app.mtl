@@ -7,7 +7,7 @@
 
 
 // Declare app level module which depends on filters, and services
-var app=angular.module('admin[p.name.substring(p.name.lastIndexOf('.')+1).toUpperFirst()/]', ['['/]
+var app=angular.module('admin[p.name.substring(p.name.lastIndex('.')+1).toUpperFirst()/]', ['['/]
   'ngRoute',
   'admin[p.name.toUpperFirst()/].controllers'
 ]);
@@ -17,7 +17,7 @@ app.config(['['/]'$routeProvider', function($routeProvider) {
   	$routeProvider.otherwise({redirectTo: '/'}); 
 }]);
 
-var module=angular.module("admin[p.name.substring(p.name.lastIndexOf('.')+1).toUpperFirst()/].controllers",['['/]]);
+var module=angular.module("admin[p.name.substring(p.name.lastIndex('.')+1).toUpperFirst()/].controllers",['['/]]);
 [/file]
 [/template]
 

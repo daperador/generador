@@ -4,7 +4,7 @@
 [comment @main/]
 [file ('/src/main/webapp/index.html', false, 'UTF-8')]
 <!DOCTYPE html>
-<html ng-app="admin[p.name.toUpperFirst()/]">
+<html ng-app="admin[p.name.substring(p.name.lastIndex('.')+1).toUpperFirst()/]">
     <head>
 [if (p.name.replaceAll('::', '.').lastIndex('.')>0)]
 	<title>Aplicaci&oacute;n [p.name.substring(p.name.lastIndex('.')+1).toUpperFirst()/]</title>
