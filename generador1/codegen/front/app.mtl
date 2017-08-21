@@ -9,6 +9,7 @@
 // Declare app level module which depends on filters, and services
 var app=angular.module('admin[p.name.substring(p.name.lastIndex('.')+1).toUpperFirst()/]', ['['/]
   'ngRoute',
+  'angularUtils.directives.dirPagination',
   'admin[p.name.substring(p.name.lastIndex('.')+1).toUpperFirst()/].controllers'
 ]);
 app.config(['['/]'$routeProvider', function($routeProvider) {
