@@ -16,10 +16,10 @@
                 [c.attribute.headerTable()/]
 				[c.getAssociations().navigableOwnedEnd->select(type <> c).headerTable() /]
 				<th>
-                    &nbsp;
+                    <input class="form-control" ng-model="q"  placeholder="Buscar"/>
                 </th>
             </tr>
-            <tr ng-repeat="row in lista">
+            <tr dir-paginate="row in lista|filter: q|itemsPerPage:10">
                 [c.attribute.dataTable()/]
 				[c.getAssociations().navigableOwnedEnd->select(type <> c).associationDataTable() /]
 				<td class="row">
@@ -32,7 +32,10 @@
                 </td>
             </tr>
         </table>
-        <br/>
+		<div class="row pull-right">
+			<div dir-pagination-controls></div>
+    	<div/>
+		<br/>
     </div>
 </div>
 
