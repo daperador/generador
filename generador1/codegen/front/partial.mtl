@@ -62,10 +62,13 @@
 
 [template public dataTable(a : Property)]
 	[if(a.type.name.equalsIgnoreCase('Date'))]
-		<td class="row">{{row.[a.name/]| date: 'dd/MM/yyyy'}}</td>
+		<td>{{row.[a.name/]| date: 'dd/MM/yyyy'}}</td>
+	[elseif(a.type.name.equalsIgnoreCase('Boolean'))]
+		<td><span class="glyphicon" ng-class="row.[a.name/]?'glyphicon-ok':'glyphicon-remove'"></span>{{}}</td>
 	[else]
-		<td class="row">{{row.[a.name/]}}</td>
-	[/if]                
+		<td>{{row.[a.name/]}}</td>
+	[/if]
+
 [/template]
 
 [template public associationDataTable(a : Property) ? (not a.isMany())]
