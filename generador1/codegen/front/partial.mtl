@@ -32,9 +32,7 @@
                 </td>
             </tr>
         </table>
-		<div class="row pull-right">
-			<div dir-pagination-controls></div>
-    	<div/>
+		<div dir-pagination-controls></div>
 		<br/>
     </div>
 </div>
@@ -87,9 +85,10 @@
 							<span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
                     	</div>
                         <script>
-                                    var dp_[a.name/] = $('#[a.name/]').datepicker({format: 'dd/mm/yyyy'}).on('changeDate', function (ev) {
-                                        dp_[a.name/].hide();
-                                    }).data('datepicker');
+                                    $('#[a.name/]').datepicker({format: 'dd/mm/yyyy', language: "es"})
+										.on('changeDate', function (ev) {
+                                        	dp_[a.name/].hide();
+                                    	}).data('datepicker');
                         </script>
 [elseif(a.type.name.equalsIgnoreCase('Boolean'))]
 						<input id="[a.name/]" 

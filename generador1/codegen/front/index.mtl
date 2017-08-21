@@ -59,6 +59,7 @@
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0-rc.1/angular.min.js"></script>
         <script src="https://code.angularjs.org/1.5.0-rc.1/angular-route.js"></script>
         <script src="http://www.donatosoft.com/libjs/bootstrap-datepicker.js"></script>
+        <script src="http://www.donatosoft.com/libjs/bootstrap-datepicker.es.min.js"></script>
         <script src="http://www.donatosoft.com/libjs/dirpaginate.js"></script>
 
 
