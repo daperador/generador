@@ -7,7 +7,7 @@
 
 module.controller('[c.name/]Ctrl', ['['/]'$scope', '$filter', '$http', function ($scope, $filter, $http) {
     //listar
-    $scope.lista = {};
+    $scope.lista = [];
     $scope.datosFormulario = {};
     $scope.panelEditar = false;
     $scope.listar=function(){
