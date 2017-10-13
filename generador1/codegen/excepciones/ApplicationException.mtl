@@ -1,0 +1,38 @@
+[module ApplicationException('http://www.eclipse.org/uml2/4.0.0/UML')/]
+
+[template public generate(p : Package)]
+[comment @main/]
+[file ('/src/main/java/' + p.qualifiedName.replaceAll('::|\\.', '/') +'/excepciones/ApplicationException.java', false, 'UTF-8')]
+
+package [p.qualifiedName.replaceAll('::', '.')/].excepciones;
+
+import java.io.Serializable;
+import java.util.List;
+
+/**
+ *
+ * @author daniel
+ */
+@javax.ejb.ApplicationException
+public class ApplicationException extends RuntimeException implements Serializable{
+
+    private static final long serialVersionUID = 1L;
+    
+    public ApplicationException() {
+        super();
+    }
+    public ApplicationException(String msg)   {
+        super(msg);
+    }
+    public ApplicationException(String msg, Exception e)  {
+        super(msg, e);
+    }
+
+}
+
+[/file]
+[/template]
+
+[template public generate(c : Class)]
+resources.add([c.name/]Servicio.class);
+[/template]
