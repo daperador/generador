@@ -2,7 +2,7 @@
 
 [template public generate(c : Class)]
 [comment @main/]
-[file ('/src/main/java/' + c._package.qualifiedName.replaceAll('::|\\.', '/') +'/logica/'+ c.name + 'Logica.java', false, 'UTF-8')]
+[file ('/src/main/java/' + c._package.qualifiedName.replaceAll('::', '/') +'/logica/'+ c.name + 'Logica.java', false, 'UTF-8')]
 package [c._package.qualifiedName.replaceAll('::', '.')/].logica;
 
 import [c._package.qualifiedName.replaceAll('::', '.')/].dto.*;
