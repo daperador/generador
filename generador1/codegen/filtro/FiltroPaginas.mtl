@@ -1,0 +1,92 @@
+[module FiltroPaginas('http://www.eclipse.org/uml2/4.0.0/UML')/]
+
+[template public generate(p : Package)]
+[comment @main/]
+[file ('/src/main/java/'+ p.qualifiedName.replaceAll('::', '/') +'/filtros/FiltroPaginas.java', false, 'UTF-8')]
+package [p.qualifiedName.replaceAll('::', '.')/].filtros;
+package co.com.runt.runistac.filtros;
+
+
+
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.PrintStream;
+import java.io.PrintWriter;
+import java.io.StringWriter;
+import javax.servlet.Filter;
+import javax.servlet.FilterChain;
+import javax.servlet.FilterConfig;
+import javax.servlet.ServletException;
+import javax.servlet.ServletRequest;
+import javax.servlet.ServletResponse;
+import javax.servlet.annotation.WebFilter;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import org.apache.commons.io.IOUtils;
+
+/**
+ * Esta clase fuerza a que todos los recursos que se utilizan en la aplicacion
+ * no tengan cache y siempre se carguen esto no incluye archivos txt, pdf y csv
+ *
+ * @generated
+ */
+@WebFilter(filterName = "FiltroPaginas", urlPatterns = {"*.html","/"})
+public class FiltroPaginas implements Filter {
+
+    private static final String CONTEXT_PATH="/[p.name/]/";
+    
+    public FiltroPaginas() {
+        //no realiza ninguna accion
+    }
+
+    @Override
+    public void init(FilterConfig filterConfig) throws ServletException {
+        //no realiza ninguna accion
+    }
+
+    /**
+     *
+     * @param request The servlet request we are processing
+     * @param response The servlet response we are creating
+     * @param chain The filter chain we are processing
+     *
+     * @exception IOException if an input/output error occurs
+     * @exception ServletException if a servlet error occurs
+     */
+    public void doFilter(ServletRequest request, ServletResponse response,
+            FilterChain chain)
+            throws IOException, ServletException {
+        if(((HttpServletRequest)request).getRequestURI().contains("login")
+                ||((HttpServletRequest)request).getRequestURI().contains("error")){
+            chain.doFilter(request, response);
+            return;
+        }
+        if (((HttpServletRequest)request).getRequestURI().matches(CONTEXT_PATH+"['['/]0-9A-Za-z\\-]+\\.html.*")|| ((HttpServletRequest)request).getRequestURI().compareTo(CONTEXT_PATH)==0) {
+            ((HttpServletResponse) response).setContentType("text/html;charset=UTF-8");
+            try (PrintWriter out = response.getWriter()) {
+
+                StringWriter writer;
+                try (InputStream is = FiltroPaginas.class.getResourceAsStream("index.html")) {
+                    writer = new StringWriter();
+                    IOUtils.copy(new InputStreamReader(is), writer);
+                }
+                String html = writer.toString();
+                String pagina = ((HttpServletRequest)request).getRequestURI();
+                html = html.replaceAll("\\$\\{pagina\\}", pagina.replaceAll("\\.html", "").replaceAll(CONTEXT_PATH, ""));
+                out.write(html);
+            }
+        } else {
+            chain.doFilter(request, response);
+        }
+
+    }
+
+    @Override
+    public void destroy() {
+        //no realiza ninguna accion
+    }
+}
+
+[/file]
+[/template]

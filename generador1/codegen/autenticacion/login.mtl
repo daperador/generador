@@ -1,0 +1,77 @@
+[module crud('http://www.eclipse.org/uml2/4.0.0/UML')/]
+
+[template public generate(p : Package)]
+[comment @main/]
+[file ('/src/main/web/login.html', false, 'UTF-8')]
+<!DOCTYPE html> 
+<html>
+    <head>
+        <title>Aplicaci&oacute;n [p.name/]</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width">
+        <link href="./css/bootstrap.min.css" rel="stylesheet"/>
+        <link href="./css/main.css" rel="stylesheet"/>
+
+        <script src="./js/lib/jquery-2.2.0.min.js"></script>        
+        <script src="./js/lib/utils.js"></script>
+    </head>
+    <body class="principal"> 
+        <div class="container" id="index">
+            <div class="content-header">
+                <div class="titulo-aplicacion">
+                    <span class="titulo-aplicacion">[p.name/]</span>
+                </div>
+            </div>
+            <div class="content-body">
+                <div id="iframeContenido">
+                    <div class="errores">
+
+                    </div>                            
+                    <div class="col-lg-6 center-block" style="float: none;">
+                        <div class="panel panel-primary">
+                            <div class="panel-heading">Ingreso a la aplicaci&oacute;n</div>
+                            <div class="panel-body">
+                                <form method="POST" action="login">
+                                    <div class="form-group">
+                                        <label>Usuario</label>
+                                        <input type="text" class="form-control" id="usuario" name="Usuario"/>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Contrase&ntilde;a</label>
+                                        <input type="password" class="form-control" name="password" id="password"/>
+                                    </div>
+                                    <div class="btn-group pull-right">
+                                        <button type="submit" class="btn btn-primary">Ingresar</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="content-footer"></div>
+        </div>
+        <script src="./js/lib/bootstrap.min.js"></script>
+        <script src="./js/lib/login.js"></script>
+        <script>
+            var error = getParameterByName('error');
+            if (error) {
+                if (error === '401') {
+                    $(".errores").html('<div class="alert alert-danger text-center" role="alert">' +
+                            '<span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>' +
+                            '<span class="sr-only">Error:</span> ' +
+                            'La dirección ip desde donde intenta acceder no esta permitida' +
+                            '</div>');
+                } else {
+                    $(".errores").html('<div class="alert alert-danger text-center" role="alert">' +
+                            '<span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>' +
+                            '<span class="sr-only">Error:</span> ' +
+                            'El usuario o la clave son inv&aacute;lidos, por favor rectifique e intente nuevamente' +
+                            '</div>');
+                }
+            }
+        </script>
+    </body>
+</html>
+[/file]
+[/template]
