@@ -68,7 +68,7 @@ public [a.name/] obtener(Long id){
 /**
 * @generated
 */
-public [a.name/] guardar([a.name/] entidad){
+public [a.name/] guardar2([a.name/] entidad){
 	em.persist(entidad);
 	return entidad;
 }
