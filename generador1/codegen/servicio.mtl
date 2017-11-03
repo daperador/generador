@@ -2,7 +2,7 @@
 
 [template public generate(c : Class)]
 [comment @main/]
-[file ('/src/main/java/' + c._package.qualifiedName.replaceAll('::|\\.', '/') +'/servicio/'+ c.name + 'Servicio.java', false, 'UTF-8')]
+[file ('/src/main/java/' + c._package.qualifiedName.replaceAll('::|\\.', '/') +'/servicio/'+ c.name + 'Service.java', false, 'UTF-8')]
 package [c._package.qualifiedName.replaceAll('::', '.')/].servicio;
 
 import [c._package.qualifiedName.replaceAll('::', '.')/].dto.*;
@@ -45,7 +45,7 @@ import javax.ws.rs.core.*;
 @Path("/[c.name/]")
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
-[c.visibility/] class [c.name/]Servicio[c.extendsHeader()/][c.implementsHeader()/]
+[c.visibility/] class [c.name/]Service[c.extendsHeader()/][c.implementsHeader()/]
 [/template]
 
 [template public extendsHeader(c : Class) ? (c.superClass->notEmpty())]
