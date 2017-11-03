@@ -3,14 +3,14 @@
 [template public generate(c : Class)]
 [comment @main/]
 [file ('/src/main/webapp/partials/'+c.name+'.html', false, 'UTF-8')]
-<div class="btn-group">
-	<button type="button" class="btn btn-default" ng-click="nuevo()">Nuevo [c.name/]</button>
-	<button type="button" class="btn btn-default" ng-click="cancelar()">Listar [c.name/]</button>
-</div>
+
 				
 <div class="panel panel-primary" ng-hide="panelEditar">
     <div class="panel-heading">Parametrizaci&oacute;n de [c.name/]</div>
     <div class="panel-body">
+		<div class="btn-group">
+			<button type="button" class="btn btn-default" ng-click="nuevo()">Nuevo [c.name/]</button>
+		</div>
         <table class="resultados table table-striped">
             <tr>
                 [c.attribute.headerTable()/]
@@ -40,14 +40,12 @@
 <div class="panel panel-primary" ng-show="panelEditar">
     <div class="panel-heading">Parametrizaci&oacute;n de [c.name/]</div>
     <div class="panel-body">
-        <form role="form" id="formularioEditar">
-            [c.attribute.fieldDef()/] 
-			[c.getAssociations().navigableOwnedEnd->select(type <> c).associationDef() /]
-			<div class="btn-group">
-				<button type="button" class="btn btn-default" ng-click="guardar()">Aceptar</button>
-                <button type="button" class="btn btn-default" ng-click="cancelar()">Cancelar</button>
-            </div>
-        </form>
+	    [c.attribute.fieldDef()/] 
+		[c.getAssociations().navigableOwnedEnd->select(type <> c).associationDef() /]
+		<div class="btn-group">
+			<button type="button" class="btn btn-default" ng-click="guardar()">Aceptar</button>
+	        <button type="button" class="btn btn-default" ng-click="cancelar()">Cancelar</button>
+	    </div>    
     </div>
 </div>
 
@@ -55,72 +53,74 @@
 [/template]
 
 [template public headerTable(a : Property) ? (not a.isMany())]
-				<th>
-                    [a.name/]
-                </th>
+<th>
+    [a.name/]
+</th>
+
 [/template]
 
 [template public dataTable(a : Property)]
-	[if(a.type.name.equalsIgnoreCase('Date'))]
-		<td>{{row.[a.name/]| date: 'dd/MM/yyyy'}}</td>
-	[elseif(a.type.name.equalsIgnoreCase('Boolean'))]
-		<td><span class="glyphicon" ng-class="row.[a.name/]?'glyphicon-ok':'glyphicon-remove'"></span>{{}}</td>
-	[else]
-		<td>{{row.[a.name/]}}</td>
-	[/if]
+[if(a.type.name.equalsIgnoreCase('Date'))]
+	<td>{{row.[a.name/]| date: 'dd/MM/yyyy'}}</td>
+[elseif(a.type.name.equalsIgnoreCase('Boolean'))]
+	<td><span class="glyphicon" ng-class="row.[a.name/]?'glyphicon-ok':'glyphicon-remove'"></span>{{}}</td>
+[else]
+	<td>{{row.[a.name/]}}</td>
+[/if]
 
 [/template]
 
 [template public associationDataTable(a : Property) ? (not a.isMany())]
-	<td class="row">{{row.[a.name/].nombre}}</td>              
+	<td class="row">{{row.[a.name/].nombre}}</td>     
+         
 [/template]
 
 [template public fieldDef(a : Property)]
-				<div class="row">
-                    <div class="form-group col-md-6" ng-class="errores.[a.name/]?'error':''">
-                        <label for="[a.name/]">[a.name/]</label>
+				
+<div class="form-group col-md-6" ng-class="errores.[a.name/]?'error':''">
+    <label for="[a.name/]">[a.name/]</label>
 [if(a.type.name.equalsIgnoreCase('Date'))] 
-						<div class="input-group">
-	                        <input id="[a.name/]" 
-	                               class="form-control datepicker" 
-	                               type="text" 
-	                               ng-model="datosFormulario.[a.name/]"/>
-							<span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
-                    	</div>
-                        <script>
-                                    $('#[a.name/]').datepicker({format: 'dd/mm/yyyy', language: "es"})
-										.on('changeDate', function (ev) {
-                                        	dp_[a.name/].hide();
-                                    	}).data('datepicker');
-                        </script>
+	<div class="input-group">
+        <input id="[a.name/]" 
+               class="form-control datepicker" 
+               type="text" 
+               ng-model="datosFormulario.[a.name/]"/>
+		<span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+	</div>
+    <script>
+                $('#[a.name/]').datepicker({format: 'dd/mm/yyyy', language: "es"})
+					.on('changeDate', function (ev) {
+                    	dp_[a.name/].hide();
+                	}).data('datepicker');
+    </script>
 [elseif(a.type.name.equalsIgnoreCase('Boolean'))]
-						<input id="[a.name/]" 
-							   type="checkbox"
-                               class="form-control" 
-                               ng-model="datosFormulario.[a.name/]"/>
+	<input id="[a.name/]" 
+		   type="checkbox"
+           class="form-control" 
+           ng-model="datosFormulario.[a.name/]"/>
 [else]
-                        <input id="[a.name/]" 
-                               class="form-control" 
-							   type="text"
-                               ng-model="datosFormulario.[a.name/]"
-							   placeholder="[a.name/]"/>
+    <input id="[a.name/]" 
+           class="form-control" 
+		   type="text"
+           ng-model="datosFormulario.[a.name/]"
+		   placeholder="[a.name/]"/>
 [/if]
-                        <div ng-show="errores.[a.name/]">{{errores.[a.name/]}}</div>
-                    </div>
-                </div>
+    <div ng-show="errores.[a.name/]">{{errores.[a.name/]}}</div>
+</div>
 [/template]
 
 [template public associationDef(a : Property) ? (not a.isMany())]
-				<div class="row">
-                    <div class="form-group col-md-6" ng-class="errores.idAseg?'error':''">
-                        <label>[a.name/]</label>
-						<select id="[a.name/]" class="form-control" 
-                            ng-model="datosFormulario.[a.name/]"
-                            ng-options="option.nombre for option in lista[a.name.toUpperFirst()/] track by option.id">
-                    	</select>
-                        <div ng-show="errores.[a.name/]">{{errores.[a.name/]}}</div>
-                    </div>
-                </div>
+<div class="row">
+    <div class="form-group col-md-6" ng-class="errores.[a.name/]?'error':''">
+        <label>[a.name/]</label>
+		<select id="[a.name/]" class="form-control" 
+            ng-model="datosFormulario.[a.name/]"
+            ng-options="option.nombre for option in lista[a.name.toUpperFirst()/] track by option.id">
+    	</select>
+        <div ng-show="errores.[a.name/]">{{errores.[a.name/]}}</div>
+    </div>
+</div>
+
 [/template]
 
 [query public isMany(s : MultiplicityElement) : Boolean =
