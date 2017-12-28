@@ -58,7 +58,7 @@ import java.util.Date;
 /**
 * @generated
 */
-/*private List<[a.type.name/]DTO> [a.name/];
+private List<[a.type.name/]DTO> [a.name/];
 
 public List<[a.type.name/]DTO> get[a.name.toUpperFirst()/](){
 	if(this.[a.name/]==null){
@@ -70,7 +70,6 @@ public List<[a.type.name/]DTO> get[a.name.toUpperFirst()/](){
 public void set[a.name.toUpperFirst()/](List<[a.type.name/]DTO> [a.name/]){
 	this.[a.name/]=[a.name/];
 }
-*/
 
 [/template]
 
@@ -89,6 +88,7 @@ private [a.tipoDTO()/] [a.name/];
 
 [template public accessors(a : Property) ? (not a.isMany())]
 /**
+* @return
 * @generated
 */
 public [a.tipoDTO()/] get[a.name.toUpperFirst()/]() {
@@ -96,6 +96,7 @@ public [a.tipoDTO()/] get[a.name.toUpperFirst()/]() {
 }
 
 /**
+* @param
 * @generated
 */
 public void set[a.name.toUpperFirst()/]([a.tipoDTO()/] [a.name/]) {
@@ -105,7 +106,7 @@ public void set[a.name.toUpperFirst()/]([a.tipoDTO()/] [a.name/]) {
 [/template]
 
 [template public tipoDTO(a:Property)]
-[if(a.isAttribute())][if(a.type.name='Date')]String[else][a.type.name/][/if][else][a.type.name/]DTO[/if]
+[if(a.isAttribute())][if(a.type.name='Date' or a.type.name='LocalDate' or a.type.name='LocalDateTime' or a.type.name='LocalTime')]String[else][a.type.name/][/if][else][a.type.name/]DTO[/if]
 [/template]
 
 

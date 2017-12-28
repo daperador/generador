@@ -15,10 +15,11 @@ import javax.ws.rs.*;
 import javax.ws.rs.core.*;
 
 /**
-  *  @author [c._package.eAnnotations.details->select(a: ecore::EStringToStringMapEntry|a.key='author').value/]
-  *  @generated
-  */
+ *  @author [c._package.eAnnotations.details->select(a: ecore::EStringToStringMapEntry|a.key='author').value/]
+ *  @generated
+ */
 [c.classHeader()/] {
+	
 	@EJB
     private [c.name/]Logica logica;
 

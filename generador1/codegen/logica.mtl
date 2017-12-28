@@ -10,12 +10,15 @@ import [c._package.qualifiedName.replaceAll('::', '.')/].persistencia.*;
 import [c._package.qualifiedName.replaceAll('::', '.')/].persistencia.entity.*;
 import java.util.List;
 import java.util.ArrayList;
-import javax.persistence.*;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
 [if (c.attribute->exists(a : Property | a.type.name.equalsIgnoreCase('Date')))]
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+[/if]
+[if (c.attribute->exists(a : Property | (a.type.name.equalsIgnoreCase('LocalDate') or a.type.name.equalsIgnoreCase('LocalDateTime') or a.type.name.equalsIgnoreCase('LocalTime'))))]
+import java.time.*;
+import java.time.format.DateTimeFormatter;
 [/if]
 
 /**
@@ -23,11 +26,21 @@ import java.text.SimpleDateFormat;
   *  @author [c._package.eAnnotations.details->select(a: ecore::EStringToStringMapEntry|a.key='author').value/]
   */
 [c.classHeader()/] {
+	
 	@EJB
     private [c.name/]DAO persistencia;
 
 [if (c.attribute->exists(a : Property | a.type.name.equalsIgnoreCase('Date')))]
 	private final SimpleDateFormat fecha = new SimpleDateFormat("dd/MM/yyyy");
+[/if]
+[if (c.attribute->exists(a : Property | a.type.name.equalsIgnoreCase('LocalDate')))]
+	private final DateTimeFormatter formatoFecha = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+[/if]
+[if (c.attribute->exists(a : Property | a.type.name.equalsIgnoreCase('LocalDateTime')))]
+	private final DateTimeFormatter formatoFechaHora = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
+[/if]
+[if (c.attribute->exists(a : Property | a.type.name.equalsIgnoreCase('LocalTime')))]
+	private final DateTimeFormatter formatoHora = DateTimeFormatter.ofPattern("HH:mm");
 [/if]
 
 	[c.getAll()/]
@@ -60,7 +73,7 @@ import java.text.SimpleDateFormat;
 [template public getAll(a : Class)]
 
 /**
-* retorna una lista con los [a.name/] que se encuentran en la base de datos
+* Retorna una lista con los [a.name/] que se encuentran en la base de datos
 * @return retorna una lista de [a.name/]DTO
 * @generated
 */
@@ -72,6 +85,7 @@ public List<[a.name/]DTO> obtenerTodos(){
 [template public getID(a : Class)]
 
 /**
+* Obtiene [a.name/] dado su identificador. 	
 * @param id identificador del elemento [a.name/]
 * @return [a.name/] del id dado
 * @generated
@@ -85,7 +99,7 @@ public [a.name/]DTO obtener(Long id){
 [template public insert(a : Class)]
 
 /**
- * almacena la informacion de [a.name/]
+ * Almacena la informacion de [a.name/]
  * @param dto [a.name/] a guardar
  * @return [a.name/] con los cambios realizados por el proceso de guardar
  * @generated
@@ -99,9 +113,8 @@ public [a.name/]DTO guardar([a.name/]DTO dto){
 [template public update(a : Class)]
 
 /**
- * actualiza la informacion de [a.name/]
+ * Actualiza la informacion de [a.name/]
  * @param dto [a.name/] a guardar
- * @return [a.name/] con los cambios realizados por el proceso de guardar
  * @generated
  */
 public void actualizar([a.name/]DTO dto){
@@ -126,6 +139,9 @@ public void borrar(Long id){
 [template public converterDTO2Entity(c : Class)]
 
 /**
+* Convierte un [c.name/]DTO en la entidad [c.name/].  
+* @param dto a convertir
+* @return entidad [c.name/]
 * @generated
 */
 public [c.name/] convertirDTO([c.name/]DTO dto){
@@ -149,6 +165,18 @@ public [c.name/] convertirDTO([c.name/]DTO dto){
             throw new RuntimeException("Error al convertir la fecha [a.name.toUpperFirst()/] " + dto.get[a.name.toUpperFirst()/]());
         }
 	}
+[elseif(a.type.name='LocalDate')]
+	if(dto.get[a.name.toUpperFirst()/]()!=null){
+		entidad.set[a.name.toUpperFirst()/](LocalDate.parse(dto.get[a.name.toUpperFirst()/](), formatoFecha));
+	}
+[elseif(a.type.name='LocalDateTime')]
+	if(dto.get[a.name.toUpperFirst()/]()!=null){
+		entidad.set[a.name.toUpperFirst()/](LocalDateTime.parse(dto.get[a.name.toUpperFirst()/](),formatoFechaHora));
+	}
+[elseif(a.type.name='LocalTime')]
+	if(dto.get[a.name.toUpperFirst()/]()!=null){
+		entidad.set[a.name.toUpperFirst()/](LocalTime.parse(dto.get[a.name.toUpperFirst()/](),formatoHora));
+	}
 [else]
 	entidad.set[a.name.toUpperFirst()/](dto.get[a.name.toUpperFirst()/]());
 [/if]
@@ -163,6 +191,9 @@ public [c.name/] convertirDTO([c.name/]DTO dto){
 [template public converterEntity2DTO(c : Class)]
 
 /**
+* Convierte [c.name/] en un DTO [c.name/]DTO.  
+* @param entidad a convertir
+* @return dto [c.name/]DTO
 * @generated
 */
 public [c.name/]DTO convertirEntidad([c.name/] entidad){
@@ -177,13 +208,25 @@ public [c.name/]DTO convertirEntidad([c.name/] entidad){
 
 [template public converterEntityAttribute(a : Property) ? (not a.isMany())]
 [if(a.isAttribute())]
-[if(a.type.name='Date')]
-	if(entidad.get[a.name.toUpperFirst()/]()!=null){
-		dto.set[a.name.toUpperFirst()/](fecha.format(entidad.get[a.name.toUpperFirst()/]()));
-	}
-[else]
-	dto.set[a.name.toUpperFirst()/](entidad.get[a.name.toUpperFirst()/]());
-[/if]
+	[if(a.type.name='Date')]
+		if(entidad.get[a.name.toUpperFirst()/]()!=null){
+			dto.set[a.name.toUpperFirst()/](fecha.format(entidad.get[a.name.toUpperFirst()/]()));
+		}
+	[elseif(a.type.name='LocalDate')]
+		if(entidad.get[a.name.toUpperFirst()/]()!=null){
+			dto.set[a.name.toUpperFirst()/](formatoFecha.format(entidad.get[a.name.toUpperFirst()/]()));
+		}
+	[elseif(a.type.name='LocalDateTime')]
+		if(entidad.get[a.name.toUpperFirst()/]()!=null){
+			dto.set[a.name.toUpperFirst()/](formatoFechaHora.format(entidad.get[a.name.toUpperFirst()/]()));
+		}
+	[elseif(a.type.name='LocalTime')]
+		if(entidad.get[a.name.toUpperFirst()/]()!=null){
+			dto.set[a.name.toUpperFirst()/](formatoHora.format(entidad.get[a.name.toUpperFirst()/]()));
+		}
+	[else]
+		dto.set[a.name.toUpperFirst()/](entidad.get[a.name.toUpperFirst()/]());
+	[/if]
 [else]
 	if(entidad.get[a.name.toUpperFirst()/]()!=null){
 		dto.set[a.name.toUpperFirst()/](
@@ -200,6 +243,9 @@ public [c.name/]DTO convertirEntidad([c.name/] entidad){
 [template public converterDTO2EntityList(c : Class)]
 
 /**
+* Convierte una lista de  [c.name/]DTO en una lista de [c.name/].  
+* @param dtos a convertir
+* @return entidades List<[c.name/]>
 * @generated
 */
 public List<[c.name/]> convertirDTO(List<[c.name/]DTO> dtos){
@@ -215,6 +261,9 @@ public List<[c.name/]> convertirDTO(List<[c.name/]DTO> dtos){
 [template public converterEntity2DTOList(c : Class)]
 
 /**
+* Convierte una lista de [c.name/] en una lista de [c.name/]DTO.  
+* @param entidades a convertir
+* @return dtos List<[c.name/]DTO>
 * @generated
 */
 public List<[c.name/]DTO> convertirEntidad(List<[c.name/]> entidades){
